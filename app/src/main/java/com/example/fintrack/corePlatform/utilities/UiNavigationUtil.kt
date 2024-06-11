@@ -41,5 +41,9 @@ object UiNavigationUtil {
         }
     }
 
+    fun navigate(){
+
+    }
+
 
 }

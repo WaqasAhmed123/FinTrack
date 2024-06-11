@@ -49,11 +49,10 @@ fun SplashView(navController: NavController) {
                     text = stringResource(id = R.string.app_name), // Use string resource
                     style = MaterialTheme.typography.titleLarge
                 )
-                println("Primary Color: ${colorScheme.primary}")
-                println("On Primary Color: ${colorScheme.onPrimary}")
-// Similarly, print other colors from the color scheme
 
             }
         }
+
+
     }
 }
