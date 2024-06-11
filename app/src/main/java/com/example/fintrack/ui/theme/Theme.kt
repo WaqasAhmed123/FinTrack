@@ -10,17 +10,38 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = MainGreen, secondary = Background, tertiary = LightGreen, surface = MainGreen
+    primary = MainGreen,
+    onPrimary = LettersandIcons,      // Text color for primary background
+    secondary = Background,
+    onSecondary = LettersandIcons,    // Text color for secondary background
+    tertiary = LightGreen,
+    onTertiary = LettersandIcons,     // Text color for tertiary background
+    surface = MainGreen,
+    onSurface = LettersandIcons,      // Text color for surface background
+    background = Background,
+    onBackground = LettersandIcons    // Text color for background
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = MainGreen, secondary = Background, tertiary = LightGreen, surface = MainGreen
+    primary = MainGreen,
+    onPrimary = Color.Black,      // Text color for primary background
+    secondary = Background,
+    onSecondary = Color.White,    // Text color for secondary background
+    tertiary = LightGreen,
+    onTertiary = Color.Black,     // Text color for tertiary background
+    surface = MainGreen,
+    onSurface = Color.Black,      // Text color for surface background
+    background = MainGreen,
+    onBackground = Color.Black    // Text color for background
+)
+
 
 
     /* Other default colors to override
@@ -32,7 +53,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
     */
-)
+
 
 @Composable
 fun FinTrackTheme(
@@ -41,10 +62,10 @@ fun FinTrackTheme(
     dynamicColor: Boolean = true, content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
+//        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+//            val context = LocalContext.current
+//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+//        }
 
         darkTheme -> DarkColorScheme
         else -> LightColorScheme

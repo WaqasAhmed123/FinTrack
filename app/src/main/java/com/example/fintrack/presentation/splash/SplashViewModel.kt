@@ -1,3 +1,10 @@
 package com.example.fintrack.presentation.splash
 
-class SplashViewModel {}
+import androidx.lifecycle.ViewModel
+
+class SplashViewModel : ViewModel() {
+
+    init {
+
+    }
+}

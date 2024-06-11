@@ -1,12 +1,14 @@
 package com.example.fintrack.ui.theme
 
+import TextStyleUtil
 import androidx.compose.material3.Typography
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.finwise.R
+import com.example.fintrack.R
 
 // Set of Material typography styles to start with
 
@@ -25,7 +27,8 @@ val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 16.sp,
+//        fontSize = dimensionResource(id = R.dimen._16ssp).value.sp,
+        fontSize = 16.sp
 //        lineHeight = 24.sp,
 //        letterSpacing = 0.5.sp
     ),

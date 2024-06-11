@@ -3,16 +3,19 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+// Apply external script
+apply(from = "$rootDir/config/version.gradle.kts")
+
 android {
-    namespace = "com.example.finwise"
-    compileSdk = 34
+    namespace = "com.example.fintrack"
+    compileSdk = extra["newCompileSdk"] as Int
 
     defaultConfig {
         applicationId = "com.example.fintrack"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = extra["newMinSdk"] as Int
+        targetSdk = extra["newTargetSdk"] as Int
+        versionCode = extra["verCode"] as Int
+        versionName = extra["verName"] as String
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -30,8 +33,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = extra["compileVersion"] as JavaVersion
+        targetCompatibility = extra["compileVersion"] as JavaVersion
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -48,6 +51,8 @@ android {
         }
     }
 }
+
+val extraProperties = extra
 
 dependencies {
 
@@ -66,4 +71,12 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose")
+
+    //resp scrn size
+    implementation ("com.intuit.ssp:ssp-android:${extraProperties["ssp"] as String}")
+    implementation ("com.intuit.sdp:sdp-android:${extraProperties["sdp"] as String}")
+
 }
