@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-kapt")
+    id ("com.google.dagger.hilt.android")
 }
 
 // Apply external script
@@ -78,5 +80,13 @@ dependencies {
     //resp scrn size
     implementation ("com.intuit.ssp:ssp-android:${extraProperties["ssp"] as String}")
     implementation ("com.intuit.sdp:sdp-android:${extraProperties["sdp"] as String}")
+
+    //Dagger - Hilt
+    implementation ("com.google.dagger:hilt-android:2.51.1")
+    kapt ("com.google.dagger:hilt-android-compiler:2.51.1")
+//    implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    kapt ("androidx.hilt:hilt-compiler:1.2.0")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+
 
 }

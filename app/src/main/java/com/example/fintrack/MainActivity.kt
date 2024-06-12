@@ -13,7 +13,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.fintrack.corePlatform.utilities.UiNavigationUtil
 import com.example.fintrack.presentation.splash.SplashView
 import com.example.fintrack.ui.theme.FinTrackTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
