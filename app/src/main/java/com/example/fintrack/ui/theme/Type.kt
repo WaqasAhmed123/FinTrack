@@ -1,5 +1,6 @@
 package com.example.fintrack.ui.theme
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -23,42 +24,42 @@ val poppinsFontFamily = FontFamily(
 val Typography = Typography(
 
     bodyLarge = TextStyle(
-        fontFamily = poppinsFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontFamily = poppinsFontFamily, fontWeight = FontWeight.SemiBold,
 //        fontSize = dimensionResource(id = R.dimen._16ssp).value.sp,
         fontSize = 16.sp
 //        lineHeight = 24.sp,
 //        letterSpacing = 0.5.sp
     ),
+    bodyMedium = TextStyle(
+        fontFamily = poppinsFontFamily, fontWeight = FontWeight.Normal, fontSize = 16.sp,
+    ),
+    bodySmall = TextStyle(
+        fontFamily = poppinsFontFamily, fontWeight = FontWeight.Medium, fontSize = 15.sp,
+    ),
+
     titleLarge = TextStyle(
         fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 52.14.sp,
-//        lineHeight = 28.sp,
-//        letterSpacing = 0.sp
-    ),
-    titleMedium = TextStyle(
+    ), titleMedium = TextStyle(
         fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 30.sp,
 //        lineHeight = 28.sp,
 //        letterSpacing = 0.sp
-    ),
-    titleSmall = TextStyle(
+    ), titleSmall = TextStyle(
         fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 20.sp,
 //        lineHeight = 28.sp,
 //        letterSpacing = 0.sp
-    ),
-    labelSmall = TextStyle(
+    ), labelSmall = TextStyle(
         fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 11.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     )
-
 
 
 )

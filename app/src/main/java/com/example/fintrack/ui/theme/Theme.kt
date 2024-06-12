@@ -18,15 +18,15 @@ import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
     primary = MainGreen,
-    onPrimary = LettersandIcons,      // Text color for primary background
+    onPrimary = DarkModeLettersandIcons,      // Text color for primary background
     secondary = Background,
-    onSecondary = LettersandIcons,    // Text color for secondary background
+    onSecondary = DarkModeLettersandIcons,    // Text color for secondary background
     tertiary = LightGreen,
-    onTertiary = LettersandIcons,     // Text color for tertiary background
+    onTertiary = DarkModeLettersandIcons,     // Text color for tertiary background
     surface = MainGreen,
-    onSurface = LettersandIcons,      // Text color for surface background
+    onSurface = DarkModeLettersandIcons,      // Text color for surface background
     background = Background,
-    onBackground = LettersandIcons    // Text color for background
+    onBackground = DarkModeLettersandIcons    // Text color for background
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -40,7 +40,9 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color.Black,      // Text color for surface background
     background = MainGreen,
     onBackground = Color.Black,    // Text color for background
-    inversePrimary = BackgroundGreenWhite
+    scrim = LettersandIcons,
+    inversePrimary = BackgroundGreenWhite,
+
 
 )
 
