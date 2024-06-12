@@ -7,6 +7,8 @@ import androidx.compose.ui.graphics.Color
 val MainGreen = Color(0xFF00D09E)
 val LightGreen = Color(0xFFDFF7E2)
 val Background = Color(0xFFF1FFF3)
+val BackgroundGreenWhite  = Color(0xFFF1FFF3)
+
 val LightBlueButton = Color(0xFF6DB6FE)
 val BlueButton = Color(0xFF3299FF)
 val OceanBlueButton = Color(0xFF0068FF)

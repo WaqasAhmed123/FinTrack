@@ -39,7 +39,9 @@ private val LightColorScheme = lightColorScheme(
     surface = MainGreen,
     onSurface = Color.Black,      // Text color for surface background
     background = MainGreen,
-    onBackground = Color.Black    // Text color for background
+    onBackground = Color.Black,    // Text color for background
+    inversePrimary = BackgroundGreenWhite
+
 )
 
 
