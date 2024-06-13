@@ -2,6 +2,7 @@ package com.example.fintrack.presentation.splash
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.fintrack.corePlatform.globals.common.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -11,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SplashViewModel @Inject constructor() : ViewModel() {
+class SplashViewModel @Inject constructor() : BaseViewModel() {
 
     private val _navigateToNextScreen = MutableStateFlow(false)
     val navigateToNextScreen: StateFlow<Boolean> get() = _navigateToNextScreen

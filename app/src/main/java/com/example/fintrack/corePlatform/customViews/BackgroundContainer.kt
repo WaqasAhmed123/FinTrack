@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun BackgroundContainer(
-    heightPercentage: Float = 0.7f, // Default height as 70% of the parent
+    heightPercentage: Float = 1f, // Default height as 70% of the parent
     content: @Composable BoxScope.() -> Unit
 //    color: Color = Color.White // Default background color
 ) {

@@ -42,6 +42,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Color.Black,    // Text color for background
     scrim = LettersandIcons,
     inversePrimary = BackgroundGreenWhite,
+    outline = BlueButton
 
 
 )

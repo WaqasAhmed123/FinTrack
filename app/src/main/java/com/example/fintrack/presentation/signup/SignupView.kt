@@ -1,4 +1,4 @@
-package com.example.fintrack.presentation.login
+package com.example.fintrack.presentation.signup
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -28,16 +29,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.fintrack.R
 import com.example.fintrack.corePlatform.customViews.InputField
 import com.example.fintrack.corePlatform.customViews.InputFieldHeading
 import com.example.fintrack.corePlatform.customViews.ProvideSpace
 import com.example.fintrack.corePlatform.customViews.SubmitButton
+import com.example.fintrack.presentation.splash.SplashViewModel
 import com.example.fintrack.ui.components.BackgroundContainer
 
 @Composable
-fun LoginView(navController: NavController) {
+fun SignupView(navController: NavController, viewModel: SignupViewModel = hiltViewModel()) {
     Scaffold { paddingValues ->
         Box(
             modifier = Modifier
@@ -69,7 +72,7 @@ fun LoginView(navController: NavController) {
                     ) {
                         ProvideSpace(height = 0.4f)
                         Text(
-                            text = stringResource(id = R.string.welcome),
+                            text = stringResource(id = R.string.create_account),
                             style = MaterialTheme.typography.titleMedium
                         )
                     }
@@ -78,7 +81,7 @@ fun LoginView(navController: NavController) {
 
                 // Lower section
 
-                BackgroundContainer(heightPercentage = 1f) {
+                BackgroundContainer() {
 
                     Column(
                         verticalArrangement = Arrangement.Center,
@@ -86,10 +89,48 @@ fun LoginView(navController: NavController) {
                             .fillMaxWidth()
                             .padding(16.dp)
                     ) {
+                        val fullName = remember { mutableStateOf(TextFieldValue("")) }
                         val email = remember { mutableStateOf(TextFieldValue("")) }
+                        val mobileNumber = remember { mutableStateOf(TextFieldValue("")) }
                         val password = remember { mutableStateOf(TextFieldValue("")) }
+                        val confirmPassword = remember { mutableStateOf(TextFieldValue("")) }
 
-                        InputFieldHeading(text = stringResource(id = R.string.email))
+                        val textFieldStates = viewModel.textFieldStates
+
+                        LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                            items(5) { index ->
+//                                val state = textFieldStates[textFieldValue]?.collectAsState()
+                                InputField(
+                                    value = when (index) {
+                                        0 -> fullName.value
+                                        1 -> email.value
+                                        2 -> mobileNumber.value
+                                        3 -> password.value
+                                        4 -> confirmPassword.value
+                                        else -> {
+                                            email.value
+                                        }
+
+
+                                    }, onValueChange =  { email.value = it },
+                                )
+//                                state?.let { textFieldState ->
+//                                    InputField(
+//                                        value = textFieldState.value,
+//                                        onValueChange = { newValue ->
+//                                            viewModel.textFieldStates[textFieldValue]?.value =
+//                                                newValue
+//                                        },
+//                                        placeholder = textFieldValue.placeholder,
+//                                        isPassword = textFieldValue.isPassword
+//                                    )
+//                                }
+                            }
+                        }
+
+//                        LazyColumn(content = )
+
+//                        InputFieldHeading(text = stringResource(id = R.string.username_or_email))
 
                         InputField(
                             value = email.value,
