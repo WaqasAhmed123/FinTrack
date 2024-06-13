@@ -4,15 +4,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,6 +28,8 @@ import androidx.navigation.NavController
 import com.example.fintrack.R
 import com.example.fintrack.corePlatform.customViews.InputField
 import com.example.fintrack.corePlatform.customViews.InputFieldHeading
+import com.example.fintrack.corePlatform.customViews.ProvideSpace
+import com.example.fintrack.corePlatform.customViews.SubmitButton
 import com.example.fintrack.ui.components.BackgroundContainer
 
 @Composable
@@ -36,50 +40,104 @@ fun LoginView(navController: NavController) {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // Upper section - starts from the top
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp) // Adjust padding as needed
-                    .align(Alignment.TopCenter), // Align to the top
+                    .align(Alignment.TopCenter),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top
             ) {
-                Spacer(modifier = Modifier.height(48.dp)) // Adjust the spacer to add some space from the top
-                Text(
-                    text = stringResource(id = R.string.welcome),
-                    style = MaterialTheme.typography.titleMedium
-                )
-                Spacer(modifier = Modifier.height(16.dp)) // Adjust space between elements
-                // You can add more content here if needed
-            }
 
-            // Bottom section - starts from the bottom
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.BottomCenter), // Align to the bottom
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Bottom
-            ) {
-                BackgroundContainer(heightPercentage = 0.8f) {
+                // Upper section
+
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxHeight(0.2f)
+                        .fillMaxWidth()
+                ) {
                     Column(
-//                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.TopCenter),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Top
+                    ) {
+                        ProvideSpace(height = 0.4f)
+                        Text(
+                            text = stringResource(id = R.string.welcome),
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                    }
+
+                }
+
+                // Lower section
+
+                BackgroundContainer(heightPercentage = 1f) {
+                    Column(
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(16.dp) // Padding inside the container
+                            .padding(16.dp)
                     ) {
-                        val textState = remember { mutableStateOf(TextFieldValue("")) }
+                        val email = remember { mutableStateOf(TextFieldValue("")) }
+                        val password = remember { mutableStateOf(TextFieldValue("")) }
 
                         InputFieldHeading(text = stringResource(id = R.string.username_or_email))
 
                         InputField(
-                            value = textState.value,
-                            onValueChange = { textState.value = it },
-                            placeholder = "Enter text"
+                            value = email.value,
+                            onValueChange = { email.value = it },
+                            placeholder = stringResource(id = R.string.example_email)
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
+                        InputFieldHeading(
+                            text = stringResource(id = R.string.password)
+                        )
+                        InputField(
+                            value = password.value,
+                            onValueChange = { password.value = it },
+                            placeholder = "",
+                            isPassword = true
+                        )
+
+                        SubmitButton(onClick = { }, buttonTitle = stringResource(id = R.string.login) )
+
+                        TextButton(onClick = {}) {
+                            Text(
+                                text = stringResource(id = R.string.forgot_password),
+                                style = MaterialTheme.typography.labelMedium.copy(color = MaterialTheme.colorScheme.scrim)
+                            )
+                        }
+
+                        SubmitButton(onClick = { }, buttonTitle = stringResource(id = R.string.signup), color = MaterialTheme.colorScheme.tertiary )
+
+                        Text(
+                            text = stringResource(id = R.string.or_sign_up_with),
+                            style = MaterialTheme.typography.labelSmall.copy(color = MaterialTheme.colorScheme.scrim)
+                        )
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Center,
+//                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.ic_facebook),
+                                contentDescription = "Facebook",
+                                modifier = Modifier
+                                    .size(60.dp)
+                                    .padding(10.dp)
+                            )
+
+                            Image(
+                                painter = painterResource(id = R.drawable.ic_google),
+                                contentDescription = "Google",
+                                modifier = Modifier
+                                    .size(60.dp)
+                                    .padding(10.dp)
+                            )
+                        }
                     }
                 }
             }

@@ -24,16 +24,10 @@ val poppinsFontFamily = FontFamily(
 val Typography = Typography(
 
     bodyLarge = TextStyle(
-        fontFamily = poppinsFontFamily, fontWeight = FontWeight.SemiBold,
-//        fontSize = dimensionResource(id = R.dimen._16ssp).value.sp,
-        fontSize = 16.sp
-//        lineHeight = 24.sp,
-//        letterSpacing = 0.5.sp
-    ),
-    bodyMedium = TextStyle(
+        fontFamily = poppinsFontFamily, fontWeight = FontWeight.SemiBold, fontSize = 16.sp
+    ), bodyMedium = TextStyle(
         fontFamily = poppinsFontFamily, fontWeight = FontWeight.Normal, fontSize = 16.sp,
-    ),
-    bodySmall = TextStyle(
+    ), bodySmall = TextStyle(
         fontFamily = poppinsFontFamily, fontWeight = FontWeight.Medium, fontSize = 15.sp,
     ),
 
@@ -45,20 +39,18 @@ val Typography = Typography(
         fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 30.sp,
-//        lineHeight = 28.sp,
-//        letterSpacing = 0.sp
     ), titleSmall = TextStyle(
         fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 20.sp,
-//        lineHeight = 28.sp,
-//        letterSpacing = 0.sp
+    ), labelMedium = TextStyle(
+        fontFamily = poppinsFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp,
     ), labelSmall = TextStyle(
         fontFamily = poppinsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+        fontWeight = FontWeight.Light,
+        fontSize = 13.sp,
     )
 
 
