@@ -2,22 +2,26 @@ package com.example.easyshop.view.tab_view
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 //import androidx.compose.material3.TabRow
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
@@ -37,6 +41,7 @@ fun TabScreen(
     navController: NavController,
 ) {
 
+
     val bottomNavItems = listOf<BottomNavigationItemsData>(
         BottomNavigationItemsData("home_view", icon = painterResource(id = R.drawable.ic_home)),
         BottomNavigationItemsData("home_view", icon = painterResource(id = R.drawable.ic_analysis)),
@@ -53,17 +58,23 @@ fun TabScreen(
     val scope = rememberCoroutineScope()
 
 
-    Scaffold(
-        bottomBar = {
-
+    Scaffold(bottomBar = {
+        Box(
+            modifier = Modifier
+                .background(color = MaterialTheme.colorScheme.inversePrimary)
+                .height(108.dp),
+        ) {
             TabRow(
 
-                modifier = Modifier.height(108.dp),
-//                tabs = ,
+                modifier = Modifier
+                    .clip(RoundedCornerShape(41.dp, 41.dp, 0.dp, 0.dp))
+                    .height(108.dp),
                 indicator = {},
                 containerColor = MaterialTheme.colorScheme.tertiary, // Opt
                 selectedTabIndex = selectedItemIndex,
-            ) {
+                divider = {
+                    // Empty composable to remove the default divider
+                }) {
                 bottomNavItems.forEachIndexed { index, tabItem ->
                     Tab(selected = selectedItemIndex == index, onClick = {
                         selectedItemIndex = index
@@ -100,7 +111,11 @@ fun TabScreen(
                 }
 
             }
-        }) { innerPadding ->
+
+        }
+
+
+    }) { innerPadding ->
         // Content based on selected index
         when (selectedItemIndex) {
 

@@ -117,7 +117,7 @@ fun LoginView(navController: NavController) {
 
 
                             SubmitButton(
-                                onClick = { }, buttonTitle = stringResource(id = R.string.login)
+                                onClick = { navController.navigate("home_screen")}, buttonTitle = stringResource(id = R.string.login)
                             )
 
                             TextButton(onClick = {}) {
@@ -181,8 +181,8 @@ fun LoginView(navController: NavController) {
                                         textDecoration = TextDecoration.Underline
                                     ),
                                     modifier = Modifier.clickable {
-                                        Log.d("signup", "clicked")
-                                        //navController.navigate("signup") // Replace with your actual destination
+//                                        Log.d("signup", "clicked")
+                                        navController.navigate("signup_screen") // Replace with your actual destination
                                     })
                             }
                         }

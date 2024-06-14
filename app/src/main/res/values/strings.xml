@@ -16,4 +16,9 @@
     <string name="example_mobile_number">03461900055</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="hi">Hi</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="total_balance">Total Balance</string>
+    <string name="total_expense">Total Expense</string>
+    <string name="of_your_expenses_looks_good">of your expenses, looks good.</string>
 </resources>

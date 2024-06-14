@@ -51,6 +51,15 @@ val Typography = Typography(
         fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Light,
         fontSize = 13.sp,
+    ), headlineMedium = TextStyle(
+        fontFamily = poppinsFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+    ),
+    headlineSmall = TextStyle(
+        fontFamily = poppinsFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
     )
 
 

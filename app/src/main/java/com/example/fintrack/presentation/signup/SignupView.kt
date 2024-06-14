@@ -161,8 +161,8 @@ fun SignupView(navController: NavController, viewModel: SignupViewModel = hiltVi
                                         textDecoration = TextDecoration.Underline
                                     ),
                                     modifier = Modifier.clickable {
-                                        Log.d("login", "clicked")
-                                        //navController.navigate("signup") // Replace with your actual destination
+//                                        Log.d("login", "clicked")
+                                        navController.navigate("login_screen") // Replace with your actual destination
                                     })
                             }
                         }
