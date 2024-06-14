@@ -1,7 +1,10 @@
 package com.example.fintrack.presentation.signup
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
+import com.example.fintrack.R
 import com.example.fintrack.corePlatform.globals.common.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -9,7 +12,12 @@ import javax.inject.Inject
 @HiltViewModel
 class SignupViewModel @Inject constructor(): BaseViewModel() {
 
-    val textFieldStates = TextfieldValues.values().associateWith { mutableStateOf(TextFieldValue("")) }
+//    data class TextFieldData(
+//        val value: MutableState<TextFieldValue>,
+//        val placeholder: String
+//    )
+
+
 
 
 //    enum class TextfieldValues {
