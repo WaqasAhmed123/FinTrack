@@ -115,9 +115,9 @@ fun LoginView(navController: NavController) {
                                 .padding(16.dp)
                         ) {
 
-
                             SubmitButton(
-                                onClick = { navController.navigate("home_screen")}, buttonTitle = stringResource(id = R.string.login)
+                                onClick = { navController.navigate("home_screen") },
+                                buttonTitle = stringResource(id = R.string.login)
                             )
 
                             TextButton(onClick = {}) {
