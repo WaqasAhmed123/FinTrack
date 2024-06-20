@@ -67,13 +67,17 @@ fun TransactionEntry(
                 style = MaterialTheme.typography.labelSmall.copy(color = MaterialTheme.colorScheme.outline),
             )
         }
+
         Spacer(modifier = Modifier.width(16.dp))
+
         Divider(
             modifier = Modifier
                 .height(40.dp)
                 .width(1.dp), color = MaterialTheme.colorScheme.primary
         )
+
         Spacer(modifier = Modifier.width(16.dp))
+
         Text(
             text = expenseDuration,
             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Normal),
