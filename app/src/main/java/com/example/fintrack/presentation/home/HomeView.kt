@@ -111,7 +111,14 @@ fun HomeView(navController: NavController, viewModel: HomeViewModel = hiltViewMo
                         PeriodSelectionTab(
                             selectedTabIndex = viewModel.selectedTabIndex.value,
                             onTabSelected = { index -> viewModel.selectedTabIndex.value = index },
-                            tabItems = viewModel.tabItems)
+                            tabItems = viewModel.tabItems
+                        )
+
+                        when (viewModel.selectedTabIndex.value) {
+                            0 -> DailyContent()
+                            1 -> WeeklyContent()
+                            2 -> MonthlyContent()
+                        }
 
                     }
                 }
