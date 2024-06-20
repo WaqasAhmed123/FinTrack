@@ -82,11 +82,13 @@ dependencies {
     implementation ("com.intuit.sdp:sdp-android:${extraProperties["sdp"] as String}")
 
     //Dagger - Hilt
-    implementation ("com.google.dagger:hilt-android:2.51.1")
-    kapt ("com.google.dagger:hilt-android-compiler:2.51.1")
-//    implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    kapt ("androidx.hilt:hilt-compiler:1.2.0")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation ("com.google.dagger:hilt-android:${extraProperties["hilt"] as String}")
+    kapt ("com.google.dagger:hilt-android-compiler:${extraProperties["hilt"] as String}")
+    kapt ("androidx.hilt:hilt-compiler:${extraProperties["hilt_navigation_compose"] as String}")
+    implementation ("androidx.hilt:hilt-navigation-compose:${extraProperties["hilt_navigation_compose"] as String}")
+
+    //for charts
+    implementation("com.patrykandpatrick.vico:compose-m3:${extraProperties["vico"] as String}")
 
 
 }

@@ -34,7 +34,7 @@ fun TransactionEntry(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(vertical =  16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Box(

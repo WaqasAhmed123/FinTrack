@@ -6,7 +6,7 @@ import com.example.fintrack.R
 import com.example.fintrack.corePlatform.customViews.TransactionEntry
 
 @Composable
-fun DailyContent(){
+fun TabWiseContentHome(isDaily : Boolean = false, isWeekly : Boolean = false , isMonthly : Boolean = false ){
     Column {
         TransactionEntry(
             imageResource = R.drawable.ic_salary,

@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun PeriodSelectionTab(
-    selectedTabIndex: Int, onTabSelected: (Int) -> Unit, tabItems: List<TabItem>
+    selectedTabIndex: Int, onTabSelected: (Int) -> Unit, tabsTitles: List<String>
 ) {
     TabRow(modifier = Modifier
         .clip(RoundedCornerShape(22.dp))
@@ -30,7 +30,7 @@ fun PeriodSelectionTab(
         containerColor = MaterialTheme.colorScheme.tertiary,
         divider = {},
         indicator = {}) {
-        tabItems.forEachIndexed { index, tabItem ->
+        tabsTitles.forEachIndexed { index, tabItem ->
             Tab(
                 selected = selectedTabIndex == index,
                 onClick = { onTabSelected(index) },
@@ -38,7 +38,6 @@ fun PeriodSelectionTab(
             ) {
                 Box(
                     modifier = Modifier
-                        .padding(4.dp)
                         .fillMaxWidth()
                         .height(50.dp)
                         .background(
@@ -50,8 +49,8 @@ fun PeriodSelectionTab(
                         ), contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = tabItem.title,
-                        style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Normal),
+                        text = tabItem,
+                        style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Normal),
                         color = if (selectedTabIndex == index) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface
                     )
                 }

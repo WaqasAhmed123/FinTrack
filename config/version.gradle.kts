@@ -19,6 +19,9 @@ extra.apply {
     // 3rd Party libraries
     set("sdp", "1.0.6")
     set("ssp", "1.0.6")
+    set("hilt", "2.51.1")
+    set("hilt_navigation_compose", "1.2.0")
+    set("vico", "2.0.0-alpha.21")
 //    set("kapt", "2.0.0")
 //    set("retrofit_version", "2.11.0")
 //    set("gson_version", "2.11.0")
