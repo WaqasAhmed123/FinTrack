@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,15 +19,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.fintrack.R
+import com.example.fintrack.corePlatform.customViews.ProvideSpace
 
 @Composable
-fun BalanceExpenseBox() {
+fun BalanceExpenseBox(usagePercentage: Float = 0.3f) {
     Box(
+//        modifier = Modifier.fillMaxWidth(0.8f)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
@@ -40,7 +43,7 @@ fun BalanceExpenseBox() {
                     modifier = Modifier.weight(1f),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Row (verticalAlignment = Alignment.CenterVertically) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
                             painterResource(id = R.drawable.ic_income),
                             contentDescription = null,
@@ -55,7 +58,7 @@ fun BalanceExpenseBox() {
 
                     }
                     Text(
-                        text ="123455",
+                        text = "123455",
                         style = MaterialTheme.typography.headlineMedium,
                         color = MaterialTheme.colorScheme.inversePrimary
                     )
@@ -73,7 +76,7 @@ fun BalanceExpenseBox() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
 
-                    Row (verticalAlignment = Alignment.CenterVertically){
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
                             painterResource(id = R.drawable.ic_expense),
                             contentDescription = null,
@@ -88,7 +91,7 @@ fun BalanceExpenseBox() {
 
                     }
                     Text(
-                        text ="123455",
+                        text = "123455",
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.outline
@@ -96,26 +99,46 @@ fun BalanceExpenseBox() {
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            ProvideSpace(height = 0.08f)
 
-            // Placeholder for a graph
-//            Box(
-//                modifier = Modifier
+            Row(
+                modifier = Modifier
 //                    .fillMaxWidth()
-//                    .height(100.dp)
-//                    .background(
-//                        color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
-//                        shape = RoundedCornerShape(8.dp)
-//                    ), contentAlignment = Alignment.Center
-//            ) {
-//                Text(
-//                    text = "Graph Placeholder",
-//                    style = MaterialTheme.typography.bodyMedium,
-//                    color = MaterialTheme.colorScheme.onPrimaryContainer
-//                )
-//            }
-//
-//            Spacer(modifier = Modifier.height(16.dp))
+                    .height(27.dp)
+                    .clip(RoundedCornerShape(13.5.dp))
+                    .fillMaxWidth(0.8f)
+
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(usagePercentage)
+                        .background(Color.Black), contentAlignment = Alignment.Center
+
+                ) {
+                    Text(
+                        text = "${(usagePercentage * 100).toInt()}%",
+                        style = MaterialTheme.typography.headlineSmall.copy(color = MaterialTheme.colorScheme.inversePrimary)
+                    )
+
+                }
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f - usagePercentage)
+                        .background(MaterialTheme.colorScheme.inversePrimary),
+                    contentAlignment = Alignment.CenterEnd
+                ) {
+                    Text(
+                        text = "$20,000",
+                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+
+                    )
+                }
+            }
+
+            ProvideSpace(height = 0.08f)
 
             // Bottom section with an icon and text
             Row(
@@ -127,26 +150,14 @@ fun BalanceExpenseBox() {
                     painterResource(id = R.drawable.ic_check),
                     contentDescription = null,
                     modifier = Modifier
-                        .size(12.dp)
-                        .padding(8.dp)
+                        .size(26.dp)
+                        .padding(5.dp)
                 )
 
                 Text(
-                    text = stringResource(id = R.string.of_your_expenses_looks_good),
-                    style = MaterialTheme.typography.bodySmall
+                    text = "${(usagePercentage * 100).toInt()}% ${stringResource(id = R.string.of_your_expenses_looks_good)}",
+                    style = MaterialTheme.typography.bodySmall,
                 )
-//                Column(
-//                    horizontalAlignment = Alignment.CenterHorizontally
-//                ) {
-//                    Text(
-//                        text = stringResource(id = R.string.of_your_expenses_looks_good),
-//                        style = MaterialTheme.typography.headlineSmall
-//                    )
-//                    Text(
-//                        text = stringResource(id = R.string.of_your_expenses_looks_good),
-//                        style = MaterialTheme.typography.bodySmall,
-//                    )
-//                }
             }
         }
     }

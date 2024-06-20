@@ -26,20 +26,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.fintrack.R
 import com.example.fintrack.corePlatform.customViews.InputField
 import com.example.fintrack.corePlatform.customViews.InputFieldHeading
 import com.example.fintrack.corePlatform.customViews.NotificationIcon
+import com.example.fintrack.corePlatform.customViews.PeriodSelectionTab
 import com.example.fintrack.corePlatform.customViews.ProvideSpace
 import com.example.fintrack.corePlatform.customViews.SubmitButton
 import com.example.fintrack.presentation.components.BalanceExpenseBox
 import com.example.fintrack.presentation.signup.TextFieldData
+import com.example.fintrack.presentation.splash.SplashViewModel
 import com.example.fintrack.ui.components.BackgroundContainer
 
 @Composable
-fun HomeView(navController: NavController) {
+fun HomeView(navController: NavController, viewModel: HomeViewModel = hiltViewModel()) {
 
     Scaffold { paddingValues ->
         Box(
@@ -67,10 +71,10 @@ fun HomeView(navController: NavController) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.TopCenter),
-//                        horizontalAlignment = Alignment.CenterHorizontally,
+                        horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Top
                     ) {
-                        ProvideSpace(height = 0.2f)
+                        ProvideSpace(height = 0.06f)
                         Row {
                             Text(
                                 text = "${stringResource(id = R.string.hi)}, ${
@@ -86,6 +90,9 @@ fun HomeView(navController: NavController) {
 
 
                         }
+
+                        ProvideSpace(height = 0.06f)
+
                         BalanceExpenseBox()
                     }
 
@@ -96,11 +103,15 @@ fun HomeView(navController: NavController) {
                 BackgroundContainer() {
 
                     Column(
-                        verticalArrangement = Arrangement.Center,
+                        verticalArrangement = Arrangement.Top,
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(16.dp)
                     ) {
+                        PeriodSelectionTab(
+                            selectedTabIndex = viewModel.selectedTabIndex.value,
+                            onTabSelected = { index -> viewModel.selectedTabIndex.value = index },
+                            tabItems = viewModel.tabItems)
 
                     }
                 }
