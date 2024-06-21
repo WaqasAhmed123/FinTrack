@@ -24,9 +24,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.fintrack.R
 import com.example.fintrack.corePlatform.customViews.IncomeExpenseBox
+import com.example.fintrack.corePlatform.customViews.IncomeExpenseBoxImpTransaction
 import com.example.fintrack.corePlatform.customViews.NotificationIcon
 import com.example.fintrack.corePlatform.customViews.PeriodSelectionTab
 import com.example.fintrack.corePlatform.customViews.ProvideSpace
+import com.example.fintrack.corePlatform.customViews.TotalBalanceBox
+import com.example.fintrack.corePlatform.customViews.TransactionEntry
 import com.example.fintrack.presentation.analysis.AnalysisViewModel
 import com.example.fintrack.presentation.analysis.TabWiseContentAnalysis
 import com.example.fintrack.presentation.components.BalanceExpenseBox
@@ -54,7 +57,7 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                 Box(
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
-                        .fillMaxHeight(0.3f)
+                        .fillMaxHeight(0.38f)
                         .fillMaxWidth()
                 ) {
                     Column(
@@ -64,25 +67,42 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Top
                     ) {
-                        ProvideSpace(height = 0.06f)
+                        ProvideSpace(height = 0.045f)
                         Row {
+                            Spacer(modifier = Modifier.weight(0.6f))
                             Text(
-                                text = "${stringResource(id = R.string.hi)}, ${
-                                    stringResource(
-                                        id = R.string.transaction
-                                    )
-                                }",
+                                text = stringResource(
+                                    id = R.string.transaction,
+                                ),
                                 style = MaterialTheme.typography.titleSmall,
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.weight(1f),
                             )
 
                             NotificationIcon()
 
                         }
 
-                        ProvideSpace(height = 0.06f)
+                        //ProvideSpace(height = 0.06f)
+                        Spacer(modifier = Modifier.height(16.dp))
 
-                        BalanceExpenseBox()
+                        TotalBalanceBox(amount = "465456")
+
+                        //ProvideSpace(height = 0.06f)
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            IncomeExpenseBoxImpTransaction(
+                                amount = "465156",
+                                isIncome = true,
+                                onClick = {})
+                            IncomeExpenseBoxImpTransaction(
+                                amount = "465156",
+                                isIncome = false,
+                                onClick = {})
+                        }
                     }
 
                 }
@@ -99,7 +119,27 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                             .padding(16.dp)
                             .verticalScroll(rememberScrollState())
                     ) {
-
+                        TransactionEntry(
+                            imageResource = R.drawable.ic_salary,
+                            expenseType = "Salary" ,
+                            timeAndDate = "14-apr",
+                            expenseDuration = "Yearly",
+                            price = "$20"
+                        )
+                        TransactionEntry(
+                            imageResource = R.drawable.ic_salary,
+                            expenseType = "Salary" ,
+                            timeAndDate = "14-apr",
+                            expenseDuration = "Monthly",
+                            price = "$20"
+                        )
+                        TransactionEntry(
+                            imageResource = R.drawable.ic_salary,
+                            expenseType = "Salary" ,
+                            timeAndDate = "14-apr",
+                            expenseDuration = "Monthly",
+                            price = "$200000000000000"
+                        )
 
 
                     }

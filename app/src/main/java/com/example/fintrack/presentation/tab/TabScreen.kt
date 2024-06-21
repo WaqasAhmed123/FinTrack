@@ -35,12 +35,10 @@ import com.example.fintrack.presentation.profile.ProfileView
 import com.example.fintrack.presentation.tab.BottomNavigationItemsData
 import com.example.fintrack.presentation.transaction.TransactionView
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun TabScreen(
     navController: NavController,
 ) {
-
 
     val bottomNavItems = listOf<BottomNavigationItemsData>(
         BottomNavigationItemsData("home_view", icon = painterResource(id = R.drawable.ic_home)),
@@ -57,28 +55,18 @@ fun TabScreen(
     }
     val scope = rememberCoroutineScope()
 
-
     Scaffold(bottomBar = {
         Box(
-            modifier = Modifier
-                .background(color = MaterialTheme.colorScheme.inversePrimary)
-                .height(108.dp),
+            modifier = Modifier.background(color = MaterialTheme.colorScheme.inversePrimary)
         ) {
-            TabRow(
-
-                modifier = Modifier
-                    .clip(RoundedCornerShape(41.dp, 41.dp, 0.dp, 0.dp))
-                    .height(108.dp),
+            TabRow(modifier = Modifier.clip(RoundedCornerShape(41.dp, 41.dp, 0.dp, 0.dp)),
                 indicator = {},
                 containerColor = MaterialTheme.colorScheme.tertiary, // Opt
                 selectedTabIndex = selectedItemIndex,
-                divider = {
-                    // Empty composable to remove the default divider
-                }) {
+                divider = {}) {
                 bottomNavItems.forEachIndexed { index, tabItem ->
                     Tab(selected = selectedItemIndex == index, onClick = {
                         selectedItemIndex = index
-//                                  navController.navigate(HomeViewModel.bottomNavItems[index].route)
                     }, icon = {
                         Image(
                             painter = bottomNavItems[index].icon,
@@ -95,26 +83,10 @@ fun TabScreen(
 
 
                         )
-//                            tint = if (selectedItemIndex == index) {
-//                                MaterialTheme.colorScheme.primary
-//                            } else {
-//                                Color(0xFF9E9E9E)
-//
-//                            }
-
-                    }
-
-
-                    )
-
-
+                    })
                 }
-
             }
-
         }
-
-
     }) { innerPadding ->
         // Content based on selected index
         when (selectedItemIndex) {

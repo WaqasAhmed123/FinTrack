@@ -18,9 +18,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.fintrack.R
 
 @Composable
 fun TransactionEntry(
@@ -34,9 +37,11 @@ fun TransactionEntry(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical =  16.dp),
+            .padding(vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+//        CategoryBox(height = 53, width = 57)
+
         Box(
             modifier = Modifier
                 .height(53.dp)
@@ -45,7 +50,8 @@ fun TransactionEntry(
                 .background(MaterialTheme.colorScheme.outline)
         ) {
             Image(
-                painter = painterResource(id = imageResource),
+                painter = painterResource(id = if (isDebit) R.drawable.ic_income else R.drawable.ic_expense),
+                colorFilter = ColorFilter.tint(Color.White),
                 contentDescription = null,
                 modifier = Modifier
                     .height(23.48.dp)
