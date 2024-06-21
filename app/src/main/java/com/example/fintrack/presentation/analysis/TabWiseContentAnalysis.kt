@@ -1,10 +1,21 @@
 package com.example.fintrack.presentation.analysis
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.fintrack.R
 import com.patrykandpatrick.vico.compose.cartesian.CartesianChartHost
 import com.patrykandpatrick.vico.compose.cartesian.axis.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.cartesian.axis.rememberStartAxis
@@ -43,7 +54,10 @@ fun TabWiseContentAnalysis(
     val xLabels = when {
         isDaily -> listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
         isWeekly -> listOf("Week 1", "Week 2", "Week 3", "Week 4")
-        isMonthly -> listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+        isMonthly -> listOf(
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        )
+
         else -> listOf()
     }
 
@@ -51,11 +65,9 @@ fun TabWiseContentAnalysis(
     val cartesianChart = rememberCartesianChart(
         columnLayer,
         startAxis = rememberStartAxis(),
-        bottomAxis = rememberBottomAxis(
-            valueFormatter = CartesianValueFormatter { value, _, _ ->
-                xLabels.getOrElse(value.toInt()) { value.toString() }
-            }
-        )
+        bottomAxis = rememberBottomAxis(valueFormatter = CartesianValueFormatter { value, _, _ ->
+            xLabels.getOrElse(value.toInt()) { value.toString() }
+        })
     )
 
     // Update the data
@@ -68,7 +80,25 @@ fun TabWiseContentAnalysis(
     }
 
     // Host the Cartesian chart
-    CartesianChartHost(
-        chart = cartesianChart, modelProducer = modelProducer
-    )
+    Box(
+        modifier = Modifier
+            .clip(
+                RoundedCornerShape(50.dp)
+            )
+            .background(color = MaterialTheme.colorScheme.tertiary)
+    ) {
+        Column (modifier = Modifier.padding(20.dp)){
+            Row {
+                Text(
+                    text = stringResource(id = R.string.income_and_expense),
+                    style = MaterialTheme.typography.labelMedium
+                )
+            }
+            CartesianChartHost(
+                chart = cartesianChart, modelProducer = modelProducer
+            )
+
+        }
+    }
 }
+

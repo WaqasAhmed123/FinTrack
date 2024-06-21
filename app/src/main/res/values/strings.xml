@@ -21,4 +21,9 @@
     <string name="total_balance">Total Balance</string>
     <string name="total_expense">Total Expense</string>
     <string name="of_your_expenses_looks_good">of your expenses, looks good.</string>
+    <string name="analysis">Analysis</string>
+    <string name="income_and_expense">Income &amp; Expenses</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+    <string name="transaction">Transaction</string>
 </resources>
