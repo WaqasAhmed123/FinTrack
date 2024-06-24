@@ -2,6 +2,7 @@ package com.example.fintrack.presentation.category
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +26,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,6 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.fintrack.R
 import com.example.fintrack.corePlatform.customViews.CategoryBox
+import com.example.fintrack.corePlatform.customViews.CategoryDialog
 import com.example.fintrack.corePlatform.customViews.IncomeExpenseBox
 import com.example.fintrack.corePlatform.customViews.NotificationIcon
 import com.example.fintrack.corePlatform.customViews.PeriodSelectionTab
@@ -49,6 +53,7 @@ import com.example.fintrack.ui.components.BackgroundContainer
 
 @Composable
 fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hiltViewModel()) {
+    val isDialogOpen = remember { mutableStateOf(false) }
     Scaffold { paddingValues ->
         Box(
             modifier = Modifier
@@ -80,7 +85,8 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
                     ) {
                         ProvideSpace(height = 0.06f)
 
-                        TitleRow(title = stringResource(id = R.string.categories),
+                        TitleRow(
+                            title = stringResource(id = R.string.categories),
                             onBackPressClick = {})
 
                         ProvideSpace(height = 0.06f)
@@ -114,7 +120,8 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
                                                 .height(97.dp)
                                                 .width(105.dp)
                                                 .clip(RoundedCornerShape(22.dp))
-                                                .background(MaterialTheme.colorScheme.outline),
+                                                .background(MaterialTheme.colorScheme.outline)
+                                                .clickable { isDialogOpen.value = true },
                                             contentAlignment = Alignment.Center
                                         ) {
                                             Image(
@@ -124,8 +131,6 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
                                                 ),
                                                 modifier = Modifier.size(39.dp),
                                                 colorFilter = ColorFilter.tint(Color.White)
-
-
                                             )
                                         }
                                     } else CategoryBox(category = viewModel.categoriesList[index],
@@ -139,5 +144,14 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
             }
         }
     }
+
+    // Display the dialog when `isDialogOpen` is true
+    CategoryDialog(isDialogOpen = isDialogOpen, onSave = { categoryName ->
+        // Handle the confirmed category addition logic here
+        // For example, you might add the new category to the viewModel's list
+//            viewModel.addCategory(categoryName)
+    }, onCancel = {
+        // Handle cancellation logic if needed
+    })
 
 }

@@ -35,5 +35,11 @@
     <string name="amount">Amount</string>
     <string name="expense_title">Expense Title</string>
     <string name="enter_message">Enter Message</string>
+    <string name="new_category">New Category</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_category_name">Enter Category Name</string>
+    <string name="profile">Profile</string>
+    <string name="user_name">Username</string>
+    <string name="turn_dark_theme">Turn Dark Theme</string>
 
 </resources>

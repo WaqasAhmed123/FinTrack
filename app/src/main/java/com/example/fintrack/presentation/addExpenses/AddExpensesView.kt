@@ -33,7 +33,6 @@ import com.example.fintrack.ui.components.BackgroundContainer
 fun AddExpensesView(
     navController: NavController, viewModel: AddExpensesViewModel = hiltViewModel()
 ) {
-
     //textfield values
     val date = remember { mutableStateOf(TextFieldValue("")) }
     val amount = remember { mutableStateOf(TextFieldValue("")) }
