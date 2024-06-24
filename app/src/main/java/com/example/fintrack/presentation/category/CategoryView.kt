@@ -42,6 +42,7 @@ import com.example.fintrack.corePlatform.customViews.IncomeExpenseBox
 import com.example.fintrack.corePlatform.customViews.NotificationIcon
 import com.example.fintrack.corePlatform.customViews.PeriodSelectionTab
 import com.example.fintrack.corePlatform.customViews.ProvideSpace
+import com.example.fintrack.corePlatform.customViews.TitleRow
 import com.example.fintrack.presentation.analysis.TabWiseContentAnalysis
 import com.example.fintrack.presentation.components.BalanceExpenseBox
 import com.example.fintrack.ui.components.BackgroundContainer
@@ -78,19 +79,9 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
                         verticalArrangement = Arrangement.Top
                     ) {
                         ProvideSpace(height = 0.06f)
-                        Row {
-                            Spacer(modifier = Modifier.weight(0.6f))
-                            Text(
-                                text = stringResource(
-                                    id = R.string.categories,
-                                ),
-                                style = MaterialTheme.typography.titleSmall,
-                                modifier = Modifier.weight(1f),
-                            )
 
-                            NotificationIcon()
-
-                        }
+                        TitleRow(title = stringResource(id = R.string.categories),
+                            onBackPressClick = {})
 
                         ProvideSpace(height = 0.06f)
 
@@ -137,7 +128,8 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
 
                                             )
                                         }
-                                    } else CategoryBox(category = viewModel.categoriesList[index])
+                                    } else CategoryBox(category = viewModel.categoriesList[index],
+                                        onClick = { navController.navigate("category_detail_screen/${viewModel.categoriesList[index]}") })
                                 }
                             },
                             modifier = Modifier.fillMaxSize()
@@ -147,4 +139,5 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
             }
         }
     }
+
 }

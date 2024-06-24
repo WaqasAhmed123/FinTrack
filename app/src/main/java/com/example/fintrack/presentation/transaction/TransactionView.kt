@@ -28,6 +28,7 @@ import com.example.fintrack.corePlatform.customViews.IncomeExpenseBoxImpTransact
 import com.example.fintrack.corePlatform.customViews.NotificationIcon
 import com.example.fintrack.corePlatform.customViews.PeriodSelectionTab
 import com.example.fintrack.corePlatform.customViews.ProvideSpace
+import com.example.fintrack.corePlatform.customViews.TitleRow
 import com.example.fintrack.corePlatform.customViews.TotalBalanceBox
 import com.example.fintrack.corePlatform.customViews.TransactionEntry
 import com.example.fintrack.presentation.analysis.AnalysisViewModel
@@ -68,19 +69,8 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                         verticalArrangement = Arrangement.Top
                     ) {
                         ProvideSpace(height = 0.045f)
-                        Row {
-                            Spacer(modifier = Modifier.weight(0.6f))
-                            Text(
-                                text = stringResource(
-                                    id = R.string.transaction,
-                                ),
-                                style = MaterialTheme.typography.titleSmall,
-                                modifier = Modifier.weight(1f),
-                            )
 
-                            NotificationIcon()
-
-                        }
+                        TitleRow(title = stringResource(id = R.string.transaction), onBackPressClick = {})
 
                         //ProvideSpace(height = 0.06f)
                         Spacer(modifier = Modifier.height(16.dp))
@@ -94,12 +84,10 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            IncomeExpenseBoxImpTransaction(
-                                amount = "465156",
+                            IncomeExpenseBoxImpTransaction(amount = "465156",
                                 isIncome = true,
                                 onClick = {})
-                            IncomeExpenseBoxImpTransaction(
-                                amount = "465156",
+                            IncomeExpenseBoxImpTransaction(amount = "465156",
                                 isIncome = false,
                                 onClick = {})
                         }
@@ -120,22 +108,22 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                             .verticalScroll(rememberScrollState())
                     ) {
                         TransactionEntry(
-                            imageResource = R.drawable.ic_salary,
-                            expenseType = "Salary" ,
+                            //imageResource = R.drawable.ic_salary,
+                            expenseType = "Salary",
                             timeAndDate = "14-apr",
                             expenseDuration = "Yearly",
                             price = "$20"
                         )
                         TransactionEntry(
-                            imageResource = R.drawable.ic_salary,
-                            expenseType = "Salary" ,
+                            //imageResource = R.drawable.ic_salary,
+                            expenseType = "Salary",
                             timeAndDate = "14-apr",
                             expenseDuration = "Monthly",
                             price = "$20"
                         )
                         TransactionEntry(
-                            imageResource = R.drawable.ic_salary,
-                            expenseType = "Salary" ,
+                            //imageResource = R.drawable.ic_salary,
+                            expenseType = "Salary",
                             timeAndDate = "14-apr",
                             expenseDuration = "Monthly",
                             price = "$200000000000000"

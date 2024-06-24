@@ -1,6 +1,7 @@
 package com.example.fintrack.corePlatform.customViews
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -15,13 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CategoryBox(height : Int = 97 , width : Int = 105, category : String = ""){
+fun CategoryBox(height : Int = 97 , width : Int = 105, category : String = "", onClick:()->Unit){
     Box(
         modifier = Modifier
             .height(height.dp)
             .width(width.dp)
             .clip(RoundedCornerShape(22.dp))
-            .background(MaterialTheme.colorScheme.outline),
+            .background(MaterialTheme.colorScheme.outline).clickable { onClick() },
         contentAlignment = Alignment.Center
     ){
         Text(text = category, style = MaterialTheme.typography.labelMedium.copy(color = Color.White))

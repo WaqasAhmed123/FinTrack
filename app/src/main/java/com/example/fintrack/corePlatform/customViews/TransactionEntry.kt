@@ -27,7 +27,7 @@ import com.example.fintrack.R
 
 @Composable
 fun TransactionEntry(
-    imageResource: Int,
+    //imageResource: Int,
     expenseType: String,
     timeAndDate: String,
     expenseDuration: String,

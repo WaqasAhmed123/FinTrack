@@ -28,5 +28,12 @@
     <string name="transaction">Transaction</string>
     <string name="categories">Categories</string>
     <string name="add">Add</string>
+    <string name="back">Back</string>
+    <string name="add_expenses">Add Expenses</string>
+    <string name="save">Save</string>
+    <string name="date">Date</string>
+    <string name="amount">Amount</string>
+    <string name="expense_title">Expense Title</string>
+    <string name="enter_message">Enter Message</string>
 
 </resources>

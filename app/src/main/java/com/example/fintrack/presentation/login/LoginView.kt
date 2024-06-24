@@ -116,7 +116,7 @@ fun LoginView(navController: NavController) {
                         ) {
 
                             SubmitButton(
-                                onClick = { navController.navigate("home_screen") },
+                                onClick = { navController.navigate("tab_screen") },
                                 buttonTitle = stringResource(id = R.string.login)
                             )
 
@@ -164,9 +164,7 @@ fun LoginView(navController: NavController) {
 
                             ProvideSpace(height = 0.16f)
 
-
                             Row(modifier = Modifier.padding(horizontal = 16.dp)) {
-                                // "Don't you have an account?" part
                                 Text(
                                     text = stringResource(id = R.string.dont_have_an_account),
                                     style = MaterialTheme.typography.labelSmall,
@@ -174,15 +172,13 @@ fun LoginView(navController: NavController) {
 
                                 Spacer(modifier = Modifier.width(4.dp))
 
-                                // "Sign Up" part (clickable)
                                 Text(text = stringResource(id = R.string.signup),
                                     style = MaterialTheme.typography.labelSmall.copy(
                                         color = MaterialTheme.colorScheme.outline,
                                         textDecoration = TextDecoration.Underline
                                     ),
                                     modifier = Modifier.clickable {
-//                                        Log.d("signup", "clicked")
-                                        navController.navigate("signup_screen") // Replace with your actual destination
+                                        navController.navigate("signup_screen")
                                     })
                             }
                         }

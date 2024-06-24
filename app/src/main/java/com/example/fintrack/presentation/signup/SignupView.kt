@@ -1,6 +1,5 @@
 package com.example.fintrack.presentation.signup
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,6 +31,7 @@ import com.example.fintrack.corePlatform.customViews.InputField
 import com.example.fintrack.corePlatform.customViews.InputFieldHeading
 import com.example.fintrack.corePlatform.customViews.ProvideSpace
 import com.example.fintrack.corePlatform.customViews.SubmitButton
+import com.example.fintrack.corePlatform.globals.common.textfield.TextFieldData
 import com.example.fintrack.ui.components.BackgroundContainer
 
 @Composable

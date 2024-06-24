@@ -1,4 +1,4 @@
-package com.example.fintrack.presentation.signup
+package com.example.fintrack.corePlatform.globals.common.textfield
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.text.input.TextFieldValue

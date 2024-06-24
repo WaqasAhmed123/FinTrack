@@ -9,7 +9,7 @@ import com.example.fintrack.corePlatform.customViews.TransactionEntry
 fun TabWiseContentHome(isDaily : Boolean = false, isWeekly : Boolean = false , isMonthly : Boolean = false ){
     Column {
         TransactionEntry(
-            imageResource = R.drawable.ic_salary,
+            //imageResource = R.drawable.ic_salary,
             expenseType = "Salary" ,
             timeAndDate = "14-apr",
             expenseDuration = "MOnthly",
