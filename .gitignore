@@ -19,8 +19,8 @@ local.properties
 /fastlane/
 
 # gemfile
-Gemfile
-Gemfile.lock
+- Gemfile
+- Gemfile.lock
 
 # env
 app/src/main/assets/env
