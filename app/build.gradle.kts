@@ -18,11 +18,11 @@ android {
         targetSdk = extra["newTargetSdk"] as Int
         versionCode = extra["verCode"] as Int
         versionName = extra["verName"] as String
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
+        signingConfig = signingConfigs.getByName("debug")
     }
 
     buildTypes {
@@ -42,6 +42,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
@@ -89,6 +90,13 @@ dependencies {
 
     //for charts
     implementation("com.patrykandpatrick.vico:compose-m3:${extraProperties["vico"] as String}")
+
+    //app center
+    implementation ("com.microsoft.appcenter:appcenter-analytics:${extraProperties["appCenterSdkVersion"]}")
+    implementation ("com.microsoft.appcenter:appcenter-crashes:${extraProperties["appCenterSdkVersion"]}")
+
+    //.env
+    implementation("io.github.cdimascio:dotenv-kotlin:${extraProperties["dotenv"]}")
 
 
 }

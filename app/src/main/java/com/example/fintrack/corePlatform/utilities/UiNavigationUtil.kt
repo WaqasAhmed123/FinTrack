@@ -21,10 +21,10 @@ object UiNavigationUtil {
 
     @Composable
     fun App() {
-//        var startView = "splash_screen"
+        var startView = "splash_screen"
 //        var startView = "tab_screen"
 //        var startView = "add_expenses_screen"
-        var startView = "profile_screen"
+//        var startView = "profile_screen"
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = startView) {
             composable(route = "splash_screen") {

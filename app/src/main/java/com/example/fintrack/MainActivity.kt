@@ -3,22 +3,24 @@ package com.example.fintrack
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.fintrack.corePlatform.utilities.UiNavigationUtil
-import com.example.fintrack.presentation.splash.SplashView
 import com.example.fintrack.ui.theme.FinTrackTheme
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCenter.start(
+            application,
+            "c0604a9d-cd62-4377-8453-42beb2812d91",
+            Analytics::class.java,
+            Crashes::class.java
+        )
+
         setContent {
             FinTrackTheme {
                 // A surface container using the 'background' color from the theme

@@ -14,3 +14,17 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# fastlane
+fastlane/
+
+# gemfile
+Gemfile
+Gemfile.lock
+
+# env
+app/src/main/assets/env
+
+
+### Android Patch ###
+gen-external-apklibs
