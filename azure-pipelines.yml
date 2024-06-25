@@ -6,8 +6,7 @@
 trigger:
 - main  # Replace with your branch name
 
-pool:
-  vmImage: my-pc
+pool: my-pc
 
 variables:
   fastlane_api_token: $(APPCENTER_API_TOKEN)
