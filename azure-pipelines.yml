@@ -1,0 +1,30 @@
+# Android
+# Build your Android project with Gradle.
+# Add steps that test, sign, and distribute the APK, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/android
+
+trigger:
+- main  # Replace with your branch name
+
+pool:
+  vmImage: 'macos-latest'
+
+variables:
+  fastlane_api_token: $(APPCENTER_API_TOKEN)
+
+steps:
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.6'
+  displayName: 'Install Ruby'
+
+- script: |
+    gem install bundler
+    bundle install
+  displayName: 'Install Bundler and dependencies'
+
+- script: bundle exec fastlane generate_my_apk
+  displayName: 'Generate APK with Fastlane'
+
+- script: bundle exec fastlane app_center_upload
+  displayName: 'Upload APK to App Center'
