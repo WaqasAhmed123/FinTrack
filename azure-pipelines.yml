@@ -23,7 +23,7 @@ steps:
 - script: |
     echo "Uploading APK to App Center"
     echo  '$(Agent.DefaultWorkingDirectory)'
-    cd $(System.DefaultWorkingDirectory)\D:\Android Projects\FinTrack  # Navigate to the project directory
+    cd /D "D:\Android Projects\FinTrack"  # Navigate to the project directory
     bundle exec fastlane app_center_upload
   displayName: 'Upload APK to App Center'
   env:
