@@ -25,7 +25,7 @@ steps:
   env:
     APPCENTER_API_TOKEN: $(APPCENTER_API_TOKEN)  # Pass the environment variable from Azure Pipeline
 
-- script: |
+- script:
     echo "Listing APK Directory"
-    dir app\build\outputs\apk\release
+    dir ../app\build\outputs\apk\release
   displayName: 'List APK Directory'
