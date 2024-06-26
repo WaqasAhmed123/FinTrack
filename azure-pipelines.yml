@@ -22,7 +22,7 @@ steps:
 
 - script: |
     echo "Uploading APK to App Center"
-    workingDirectory: D:/Android Projects/FinTrack  # Navigate to the project directory
+    cd D:/Android Projects/FinTrack  # Navigate to the project directory
     bundle exec fastlane app_center_upload
   displayName: 'Upload APK to App Center'
   env:
