@@ -17,13 +17,12 @@ steps:
     bundle install
   displayName: 'Install Bundler and dependencies'
 
-#- script: bundle exec fastlane generate_my_apk
- # displayName: 'Generate APK with Fastlane'
+- script: bundle exec fastlane generate_my_apk
+  displayName: 'Generate APK with Fastlane'
 
 - script: |
     echo "Uploading APK to App Center"
     echo  '$(Agent.DefaultWorkingDirectory)'
-    cd /D "D:\Android Projects\FinTrack"  # Navigate to the project directory
     bundle exec fastlane app_center_upload
   displayName: 'Upload APK to App Center'
   env:
