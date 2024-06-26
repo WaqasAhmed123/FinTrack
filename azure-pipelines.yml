@@ -20,6 +20,11 @@ steps:
 #- script: bundle exec fastlane generate_my_apk
  # displayName: 'Generate APK with Fastlane'
 
+- script: |
+    echo "Listing APK Directory"
+    ls -al app/build/outputs/apk/release
+  displayName: 'List APK Directory'
+
 - script: bundle exec fastlane app_center_upload
   displayName: 'Upload APK to App Center'
   env:
