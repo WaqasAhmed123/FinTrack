@@ -42,11 +42,15 @@ end
 
 desc "App Center Upload"
 lane :app_center_upload do
+     apk_path = File.expand_path("../../app/build/outputs/apk/release/app-release.apk", __FILE__)
+            unless File.exist?(apk_path)
+                UI.user_error!("Couldn't find build file at path '#{apk_path}'")
+     end
     appcenter_upload(
             api_token: ENV["APPCENTER_API_TOKEN"],
             owner_name: "WaqasAhmed",
             app_name: "fintrack",
-            apk: "app/build/outputs/apk/release/app-release.apk",
+            file: apk_path,
             notify_testers: true
     )
 end
