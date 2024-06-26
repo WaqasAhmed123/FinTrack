@@ -20,12 +20,10 @@ steps:
 #- script: bundle exec fastlane generate_my_apk
  # displayName: 'Generate APK with Fastlane'
 
-- script: bundle exec fastlane app_center_upload
+- script: |
+    echo "Uploading APK to App Center"
+    cd D:/Android Projects/FinTrack  # Navigate to the project directory
+    bundle exec fastlane app_center_upload
   displayName: 'Upload APK to App Center'
   env:
     APPCENTER_API_TOKEN: $(APPCENTER_API_TOKEN)  # Pass the environment variable from Azure Pipeline
-
-- script:
-    echo "Listing APK Directory"
-    dir ../app\build\outputs\apk\release
-  displayName: 'List APK Directory'
