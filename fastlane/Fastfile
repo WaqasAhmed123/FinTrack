@@ -42,7 +42,9 @@ end
 
 desc "App Center Upload"
 lane :app_center_upload do
-     apk_path = File.expand_path("../../app/build/outputs/apk/release/app-release.apk", __FILE__)
+     #apk_path = File.expand_path("../../app/build/outputs/apk/release/app-release.apk", __FILE__)
+     apk_path = File.expand_path("D:/Azure Agent/vsts-agent-win-x64-3.241.0/_work/1/b/app-release.apk", __FILE__)
+
             unless File.exist?(apk_path)
                 UI.user_error!("Couldn't find build file at path '#{apk_path}'")
      end
