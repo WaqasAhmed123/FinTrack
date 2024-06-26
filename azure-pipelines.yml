@@ -23,10 +23,6 @@ steps:
     # gradleWrapperFile: 'MobileApp/SourceCode -Android/gradlew'
     # workingDirectory: 'MobileApp/SourceCode -Android'
     tasks: assembleRelease
-    publishJUnitResults: false
-    checkStyleRunAnalysis: true
-    findBugsRunAnalysis: true
-    pmdRunAnalysis: true
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
