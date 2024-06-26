@@ -17,8 +17,25 @@ steps:
     bundle install
   displayName: 'Install Bundler and dependencies'
 
-- script: bundle exec fastlane generate_my_apk
-  displayName: 'Generate APK with Fastlane'
+- task: Gradle@2
+  displayName: 'gradlew assembleRelease'
+  inputs:
+    # gradleWrapperFile: 'MobileApp/SourceCode -Android/gradlew'
+    # workingDirectory: 'MobileApp/SourceCode -Android'
+    tasks: assembleRelease
+    publishJUnitResults: false
+    checkStyleRunAnalysis: true
+    findBugsRunAnalysis: true
+    pmdRunAnalysis: true
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
+  inputs:
+    SourceFolder: 'MobileApp/SourceCode -Android'
+    Contents: '**/*.apk'
+    TargetFolder: '$(build.artifactStagingDirectory)'
+# - script: bundle exec fastlane generate_my_apk
+#   displayName: 'Generate APK with Fastlane'
 
 - script: |
     echo "Uploading APK to App Center"
