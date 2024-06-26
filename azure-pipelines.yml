@@ -22,3 +22,5 @@ steps:
 
 - script: bundle exec fastlane app_center_upload
   displayName: 'Upload APK to App Center'
+  env:
+    APPCENTER_API_TOKEN: $(APPCENTER_API_TOKEN)  # Pass the environment variable from Azure Pipeline
