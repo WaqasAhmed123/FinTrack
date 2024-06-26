@@ -17,8 +17,8 @@ steps:
     bundle install
   displayName: 'Install Bundler and dependencies'
 
-- script: bundle exec fastlane generate_my_apk
-  displayName: 'Generate APK with Fastlane'
+#- script: bundle exec fastlane generate_my_apk
+ # displayName: 'Generate APK with Fastlane'
 
 - script: bundle exec fastlane app_center_upload
   displayName: 'Upload APK to App Center'
