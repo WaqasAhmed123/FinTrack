@@ -10,14 +10,10 @@ import io.github.cdimascio.dotenv.dotenv
 class GlobalStateApplication:Application() {
     override fun onCreate() {
         super.onCreate()
-        Log.d("onCreateCalled","dfa")
-//        val dotenv = Dotenv.configure().directory("/assets").filename("env").load();
         val dotenv = dotenv {
             directory = "./assets"
-            filename = "env" // instead of '.env', use 'env'
+            filename = "env"
         }
-//        val dotenv = dotenv()
-        Log.d("APPCENTER_API_TOKEN","${dotenv["APPCENTER_API_TOKEN"]}" )
     }
 
 }

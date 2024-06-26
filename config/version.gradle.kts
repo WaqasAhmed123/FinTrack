@@ -14,7 +14,7 @@ extra.apply {
     set("verName", "$MAJOR.$MINOR.$PATCH")
 
     // Java version
-    set("compileVersion", JavaVersion.VERSION_1_8)
+    set("compileVersion", JavaVersion.VERSION_11)
 
     // 3rd Party libraries
     set("sdp", "1.0.6")

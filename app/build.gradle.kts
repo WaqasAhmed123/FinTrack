@@ -1,12 +1,19 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id ("kotlin-kapt")
-    id ("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 // Apply external script
 apply(from = "$rootDir/config/version.gradle.kts")
+
+//tasks.withType<org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask>().configureEach {
+//    listOf(
+//        "util", "file", "main", "jvm", "processing", "comp", "tree", "api", "parser", "code"
+//    ).flatMap { listOf("--add-opens", "jdk.compiler/com.sun.tools.javac.$it=ALL-UNNAMED") }
+//        .forEach(kaptProcessJvmArgs::add)
+//}
 
 android {
     namespace = "com.example.fintrack"
@@ -29,8 +36,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -39,7 +45,7 @@ android {
         targetCompatibility = extra["compileVersion"] as JavaVersion
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = (extra["compileVersion"] as JavaVersion).toString()
     }
     buildFeatures {
         buildConfig = true
@@ -53,7 +59,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
+
 
 val extraProperties = extra
 
@@ -79,21 +87,21 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose")
 
     //resp scrn size
-    implementation ("com.intuit.ssp:ssp-android:${extraProperties["ssp"] as String}")
-    implementation ("com.intuit.sdp:sdp-android:${extraProperties["sdp"] as String}")
+    implementation("com.intuit.ssp:ssp-android:${extraProperties["ssp"] as String}")
+    implementation("com.intuit.sdp:sdp-android:${extraProperties["sdp"] as String}")
 
     //Dagger - Hilt
-    implementation ("com.google.dagger:hilt-android:${extraProperties["hilt"] as String}")
-    kapt ("com.google.dagger:hilt-android-compiler:${extraProperties["hilt"] as String}")
-    kapt ("androidx.hilt:hilt-compiler:${extraProperties["hilt_navigation_compose"] as String}")
-    implementation ("androidx.hilt:hilt-navigation-compose:${extraProperties["hilt_navigation_compose"] as String}")
+    implementation("com.google.dagger:hilt-android:${extraProperties["hilt"] as String}")
+    kapt("com.google.dagger:hilt-android-compiler:${extraProperties["hilt"] as String}")
+    kapt("androidx.hilt:hilt-compiler:${extraProperties["hilt_navigation_compose"] as String}")
+    implementation("androidx.hilt:hilt-navigation-compose:${extraProperties["hilt_navigation_compose"] as String}")
 
     //for charts
     implementation("com.patrykandpatrick.vico:compose-m3:${extraProperties["vico"] as String}")
 
     //app center
-    implementation ("com.microsoft.appcenter:appcenter-analytics:${extraProperties["appCenterSdkVersion"]}")
-    implementation ("com.microsoft.appcenter:appcenter-crashes:${extraProperties["appCenterSdkVersion"]}")
+    implementation("com.microsoft.appcenter:appcenter-analytics:${extraProperties["appCenterSdkVersion"]}")
+    implementation("com.microsoft.appcenter:appcenter-crashes:${extraProperties["appCenterSdkVersion"]}")
 
     //.env
     implementation("io.github.cdimascio:dotenv-kotlin:${extraProperties["dotenv"]}")
