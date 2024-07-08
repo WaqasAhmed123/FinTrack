@@ -96,29 +96,29 @@ fun CategoryDetailView(
                     ) {
                         TransactionEntry(
                             //imageResource = R.drawable.ic_salary,
-                            expenseType = "Salary",
-                            timeAndDate = "14-apr",
-                            expenseDuration = "Yearly",
-                            price = "$20"
+                            expenseType = "Pizza",
+                            timeAndDate = "09-apr-2024",
+                            expenseDuration = "Daily",
+                            price = "$70"
                         )
                         TransactionEntry(
                             //imageResource = R.drawable.ic_salary,
-                            expenseType = "Salary",
-                            timeAndDate = "14-apr",
-                            expenseDuration = "Monthly",
-                            price = "$20"
+                            expenseType = "Biryani",
+                            timeAndDate = "14-apr-2024",
+                            expenseDuration = "Daily",
+                            price = "$90"
                         )
                         TransactionEntry(
                             //imageResource = R.drawable.ic_salary,
-                            expenseType = "Salary",
-                            timeAndDate = "14-apr",
+                            expenseType = "Fries",
+                            timeAndDate = "05-jul-2024",
                             expenseDuration = "Monthly",
-                            price = "$200000000000000"
+                            price = "$20"
                         )
 
                         //below add expenses button
                         AddExpenseButton(
-                            onClick = { /*TODO*/ },
+                            onClick = { navController.navigate("add_expenses_screen") },
                             buttonTitle = stringResource(id = R.string.add_expenses),
                             modifier = Modifier.align(Alignment.CenterHorizontally) // Center the button horizontally
                         )

@@ -151,6 +151,7 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
         // For example, you might add the new category to the viewModel's list
 //            viewModel.addCategory(categoryName)
     }, onCancel = {
+//        navController.popBackStack()
         // Handle cancellation logic if needed
     })
 

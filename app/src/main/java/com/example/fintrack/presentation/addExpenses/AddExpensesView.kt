@@ -42,11 +42,11 @@ fun AddExpensesView(
     //rendering textfields using lazycol
     val textFieldValues: Map<String, TextFieldData> = mapOf(
         stringResource(id = R.string.date) to TextFieldData(
-            date, stringResource(id = R.string.example_full_name)
+            date, "09-Jul-2024"
         ), stringResource(id = R.string.amount) to TextFieldData(
-            amount, stringResource(id = R.string.example_email)
+            amount, "200"
         ), stringResource(id = R.string.expense_title) to TextFieldData(
-            expenseTitle, stringResource(id = R.string.example_mobile_number)
+            expenseTitle,"Food"
         ), stringResource(id = R.string.enter_message) to TextFieldData(
             expenseDescription, ""
         )
