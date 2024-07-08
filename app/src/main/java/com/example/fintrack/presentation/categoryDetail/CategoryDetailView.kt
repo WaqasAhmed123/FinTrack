@@ -79,7 +79,7 @@ fun CategoryDetailView(
 
                         ProvideSpace(height = 0.06f)
 
-                        BalanceExpenseBox()
+                        BalanceExpenseBox(usagePercentage = 0.465f)
                     }
 
                 }

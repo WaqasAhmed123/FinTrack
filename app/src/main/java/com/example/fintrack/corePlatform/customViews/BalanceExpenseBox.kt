@@ -58,7 +58,7 @@ fun BalanceExpenseBox(usagePercentage: Float = 0.3f) {
 
                     }
                     Text(
-                        text = "123455",
+                        text = "534,544",
                         style = MaterialTheme.typography.headlineMedium,
                         color = MaterialTheme.colorScheme.inversePrimary
                     )
@@ -91,7 +91,7 @@ fun BalanceExpenseBox(usagePercentage: Float = 0.3f) {
 
                     }
                     Text(
-                        text = "123455",
+                        text = "465,156",
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.outline
@@ -130,7 +130,7 @@ fun BalanceExpenseBox(usagePercentage: Float = 0.3f) {
                     contentAlignment = Alignment.CenterEnd
                 ) {
                     Text(
-                        text = "$20,000",
+                        text = "465,156",
                         style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
                         modifier = Modifier.padding(horizontal = 16.dp)
 

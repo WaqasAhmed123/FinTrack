@@ -86,7 +86,7 @@ fun AnalysisView(navController: NavController, viewModel: AnalysisViewModel = hi
 
                                     ProvideSpace (height = 0.06f)
 
-                                    BalanceExpenseBox ()
+                                    BalanceExpenseBox (usagePercentage = 0.465f)
                     }
 
                 }
@@ -130,8 +130,8 @@ fun AnalysisView(navController: NavController, viewModel: AnalysisViewModel = hi
                             modifier = Modifier.fillMaxSize(),
                             horizontalArrangement = Arrangement.SpaceAround // Space between boxes
                         ) {
-                            IncomeExpenseBox(isIncome = true, "54656")
-                            IncomeExpenseBox(amount = "646")
+                            IncomeExpenseBox(isIncome = true, "1,000,000")
+                            IncomeExpenseBox(amount = "465,456")
 
                         }
 

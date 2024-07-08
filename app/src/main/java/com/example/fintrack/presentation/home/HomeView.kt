@@ -76,7 +76,7 @@ fun HomeView(navController: NavController, viewModel: HomeViewModel = hiltViewMo
 
                         ProvideSpace(height = 0.06f)
 
-                        BalanceExpenseBox()
+                        BalanceExpenseBox(usagePercentage = 0.465f)
                     }
 
                 }

@@ -91,7 +91,7 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
 
                         ProvideSpace(height = 0.06f)
 
-                        BalanceExpenseBox()
+                        BalanceExpenseBox(usagePercentage = 0.465f)
                     }
 
                 }

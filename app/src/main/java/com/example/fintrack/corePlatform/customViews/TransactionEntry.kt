@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.fintrack.R
 
 @Composable
@@ -66,7 +67,7 @@ fun TransactionEntry(
             modifier = Modifier.weight(1f)
         ) {
             Text(
-                text = expenseType, style = MaterialTheme.typography.labelMedium
+                text = expenseType, style = MaterialTheme.typography.labelMedium.copy(fontSize = 13.sp)
             )
             Text(
                 text = timeAndDate,

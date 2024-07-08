@@ -24,6 +24,10 @@ extra.apply {
     set("vico", "2.0.0-alpha.21")
     set("appCenterSdkVersion", "5.0.4")
     set("dotenv", "6.4.1")
+    set("retrofit_version", "2.11.0")
+    set("gson_version", "2.11.0")
+
+
 //    set("kapt", "2.0.0")
 //    set("retrofit_version", "2.11.0")
 //    set("gson_version", "2.11.0")

@@ -106,5 +106,9 @@ dependencies {
     //.env
     implementation("io.github.cdimascio:dotenv-kotlin:${extraProperties["dotenv"]}")
 
+    //retrofit
+    implementation("com.squareup.retrofit2:retrofit:${extraProperties["retrofit_version"] as String}")
+    implementation("com.squareup.retrofit2:converter-gson:${extraProperties["gson_version"] as String}")
+
 
 }

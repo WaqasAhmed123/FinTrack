@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +33,7 @@ import com.example.fintrack.corePlatform.customViews.ProvideSpace
 import com.example.fintrack.corePlatform.customViews.TitleRow
 import com.example.fintrack.corePlatform.customViews.TotalBalanceBox
 import com.example.fintrack.corePlatform.customViews.TransactionEntry
+import com.example.fintrack.corePlatform.globals.common.dataClasses.Transaction
 import com.example.fintrack.presentation.analysis.AnalysisViewModel
 import com.example.fintrack.presentation.analysis.TabWiseContentAnalysis
 import com.example.fintrack.presentation.components.BalanceExpenseBox
@@ -75,7 +78,7 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                         //ProvideSpace(height = 0.06f)
                         Spacer(modifier = Modifier.height(16.dp))
 
-                        TotalBalanceBox(amount = "465456")
+                        TotalBalanceBox(amount = "534,544")
 
                         //ProvideSpace(height = 0.06f)
                         Spacer(modifier = Modifier.height(16.dp))
@@ -84,10 +87,10 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            IncomeExpenseBoxImpTransaction(amount = "465156",
+                            IncomeExpenseBoxImpTransaction(amount = "1,000,000",
                                 isIncome = true,
                                 onClick = {})
-                            IncomeExpenseBoxImpTransaction(amount = "465156",
+                            IncomeExpenseBoxImpTransaction(amount = "465,156",
                                 isIncome = false,
                                 onClick = {})
                         }
@@ -98,6 +101,25 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                 // Lower section
 
                 BackgroundContainer() {
+                    val transactions = listOf( Transaction("Food", "09-jul-2024", "Daily", "$20"),
+                        Transaction("Grocery", "09-jul-2024", "Daily", "$50"),
+                        Transaction("Fare", "09-jul-2024", "Daily", "$15"),
+                        Transaction("Food", "02-jul-2024", "Weekly", "$20"),
+                        Transaction("Grocery", "03-jul-2024", "Weekly", "$50"),
+                        Transaction("Fare", "04-jul-2024", "Weekly", "$15"),
+                        Transaction("Sports", "05-jul-2024", "Weekly", "$30"),
+                        Transaction("Utilities", "06-jul-2024", "Weekly", "$40"),
+                        Transaction("Health", "07-jul-2024", "Weekly", "$10"),
+                        Transaction("Misc", "08-jul-2024", "Weekly", "$25"),
+                        Transaction("Rent", "01-jul-2024", "Monthly", "$500"),
+                        Transaction("Salary", "05-jul-2024", "Monthly", "$3000"),
+                        Transaction("Topup", "10-jul-2024", "Monthly", "$15"),
+                        Transaction("Fuel", "15-jul-2024", "Monthly", "$50"),
+                        Transaction("Misc", "20-jul-2024", "Monthly", "$200"),
+                        Transaction("Savings", "25-jul-2024", "Monthly", "$100"),
+                        Transaction("Loan", "30-jul-2024", "Monthly", "$250")
+
+                    )
 
 
                     Column(
@@ -105,30 +127,18 @@ fun TransactionView(navController: NavController, viewModel: AnalysisViewModel =
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(16.dp)
-                            .verticalScroll(rememberScrollState())
+//                            .verticalScroll(rememberScrollState())
                     ) {
-                        TransactionEntry(
-                            //imageResource = R.drawable.ic_salary,
-                            expenseType = "Salary",
-                            timeAndDate = "14-apr",
-                            expenseDuration = "Yearly",
-                            price = "$20"
-                        )
-                        TransactionEntry(
-                            //imageResource = R.drawable.ic_salary,
-                            expenseType = "Salary",
-                            timeAndDate = "14-apr",
-                            expenseDuration = "Monthly",
-                            price = "$20"
-                        )
-                        TransactionEntry(
-                            //imageResource = R.drawable.ic_salary,
-                            expenseType = "Salary",
-                            timeAndDate = "14-apr",
-                            expenseDuration = "Monthly",
-                            price = "$200000000000000"
-                        )
-
+                        LazyColumn {
+                            items(transactions) { transaction ->
+                                TransactionEntry(
+                                    expenseType = transaction.expenseType,
+                                    timeAndDate = transaction.timeAndDate,
+                                    expenseDuration = transaction.expenseDuration,
+                                    price = transaction.price
+                                )
+                            }
+                        }
 
                     }
                 }
