@@ -147,10 +147,13 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
 
     // Display the dialog when `isDialogOpen` is true
     CategoryDialog(isDialogOpen = isDialogOpen, onSave = { categoryName ->
+        viewModel.addCategory(categoryName)
+        isDialogOpen.value = false
         // Handle the confirmed category addition logic here
         // For example, you might add the new category to the viewModel's list
 //            viewModel.addCategory(categoryName)
     }, onCancel = {
+        isDialogOpen.value = false
 //        navController.popBackStack()
         // Handle cancellation logic if needed
     })
