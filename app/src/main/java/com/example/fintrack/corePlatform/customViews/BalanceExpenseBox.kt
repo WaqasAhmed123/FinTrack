@@ -25,11 +25,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.fintrack.R
+import com.example.fintrack.corePlatform.customViewModels.BalanceExpenseBoxViewModel
 import com.example.fintrack.corePlatform.customViews.ProvideSpace
+import com.example.fintrack.presentation.home.HomeViewModel
 
 @Composable
-fun BalanceExpenseBox(usagePercentage: Float = 0.3f) {
+fun BalanceExpenseBox(usagePercentage: Float = 0.3f, viewModel: BalanceExpenseBoxViewModel = hiltViewModel()) {
     Box(
 //        modifier = Modifier.fillMaxWidth(0.8f)
     ) {
