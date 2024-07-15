@@ -25,7 +25,7 @@ import com.example.fintrack.R
 @Composable
 fun CategoryDialog(
     isDialogOpen: MutableState<Boolean>,
-    onSave: (String) -> Unit,
+    onSave: (TextFieldValue) -> Unit,
     onCancel: () -> Unit
 ) {
     val categoryName = remember { mutableStateOf(TextFieldValue("")) }
@@ -63,7 +63,7 @@ fun CategoryDialog(
                     Spacer(modifier = Modifier.size(16.dp))
 
                     // Custom submit button
-                    SubmitButton(onClick = { onSave(categoryName.value.toString()) }, buttonTitle = stringResource(id = R.string.save))
+                    SubmitButton(onClick = { onSave(categoryName.value) }, buttonTitle = stringResource(id = R.string.save))
 
                     Spacer(modifier = Modifier.size(16.dp))
 

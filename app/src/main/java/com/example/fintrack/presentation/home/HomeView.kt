@@ -27,6 +27,7 @@ import com.example.fintrack.ui.components.BackgroundContainer
 
 @Composable
 fun HomeView(navController: NavController, viewModel: HomeViewModel = hiltViewModel()) {
+//    viewModel.fetchStatement()
 
     Scaffold { paddingValues ->
         Box(

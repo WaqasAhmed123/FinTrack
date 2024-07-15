@@ -10,10 +10,10 @@ import io.github.cdimascio.dotenv.dotenv
 class GlobalStateApplication:Application() {
     override fun onCreate() {
         super.onCreate()
-//        val dotenv = dotenv {
-//            directory = "./assets"
-//            filename = "env"
-//        }
+        val dotenv = dotenv {
+            directory = "./assets"
+            filename = "env"
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.fintrack.presentation.category
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -85,8 +86,7 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
                     ) {
                         ProvideSpace(height = 0.06f)
 
-                        TitleRow(
-                            title = stringResource(id = R.string.categories),
+                        TitleRow(title = stringResource(id = R.string.categories),
                             onBackPressClick = {})
 
                         ProvideSpace(height = 0.06f)
@@ -147,7 +147,8 @@ fun CategoryView(navController: NavController, viewModel: CategoryViewModel = hi
 
     // Display the dialog when `isDialogOpen` is true
     CategoryDialog(isDialogOpen = isDialogOpen, onSave = { categoryName ->
-        viewModel.addCategory(categoryName)
+        Log.d("catValue", "${categoryName.text}")
+        viewModel.addCategory(categoryName.text)
         isDialogOpen.value = false
         // Handle the confirmed category addition logic here
         // For example, you might add the new category to the viewModel's list

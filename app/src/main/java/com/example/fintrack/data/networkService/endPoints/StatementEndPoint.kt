@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface StatementEndPoint {
     @GET(NetworkAPIUrls.STATEMENT_API)
-    fun getWeatherAndCityInfo(
+    fun getStatement(
         @Query("userId") userId: String
     ): Call<Statement>
 }

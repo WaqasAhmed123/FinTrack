@@ -1,4 +1,4 @@
-package com.example.weather_xml.corePlatform.globals.common.base
+package com.example.fintrack.data.repositories.base
 
 import android.os.Build
 import androidx.annotation.RequiresApi
