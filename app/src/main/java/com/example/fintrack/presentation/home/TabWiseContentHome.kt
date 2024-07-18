@@ -3,7 +3,7 @@ package com.example.fintrack.presentation.home
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import com.example.fintrack.corePlatform.customViews.TransactionEntry
+import com.example.fintrack.presentation.customViews.TransactionEntry
 import com.example.fintrack.corePlatform.globals.common.dataClasses.Transaction
 
 @Composable

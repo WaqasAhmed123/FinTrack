@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.fintrack.R
+import com.example.fintrack.presentation.customViews.InputField
+import com.example.fintrack.presentation.customViews.SubmitButton
 
 @Composable
 fun CategoryDialog(

@@ -1,4 +1,4 @@
-package com.example.fintrack.corePlatform.customViews
+package com.example.fintrack.presentation.customViews
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight

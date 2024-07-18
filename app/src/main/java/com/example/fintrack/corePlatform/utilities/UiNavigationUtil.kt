@@ -1,10 +1,13 @@
 package com.example.fintrack.corePlatform.utilities
 
+import LoadingState
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.easyshop.view.tab_view.TabScreen
+import com.example.fintrack.presentation.customViews.NetworkError
+import com.example.fintrack.presentation.customViews.NoInternetConnection
 import com.example.fintrack.presentation.addExpenses.AddExpensesView
 import com.example.fintrack.presentation.analysis.AnalysisView
 import com.example.fintrack.presentation.category.CategoryView
@@ -22,6 +25,7 @@ object UiNavigationUtil {
     @Composable
     fun App() {
         var startView = "splash_screen"
+//        var startView = "loading_screen"
 //        var startView = "tab_screen"
 //        var startView = "add_expenses_screen"
 //        var startView = "profile_screen"
@@ -59,6 +63,15 @@ object UiNavigationUtil {
             }
             composable (route = "profile_screen") {
                 ProfileView(navController)
+            }
+            composable (route = "network_error_screen") {
+                NetworkError(onRetry = ({}))
+            }
+            composable (route = "no_internet_screen") {
+                NoInternetConnection()
+            }
+            composable (route = "loading_screen") {
+                LoadingState()
             }
 
         }

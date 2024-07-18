@@ -30,10 +30,10 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.fintrack.R
-import com.example.fintrack.corePlatform.customViews.InputField
-import com.example.fintrack.corePlatform.customViews.InputFieldHeading
-import com.example.fintrack.corePlatform.customViews.ProvideSpace
-import com.example.fintrack.corePlatform.customViews.SubmitButton
+import com.example.fintrack.presentation.customViews.InputField
+import com.example.fintrack.presentation.customViews.InputFieldHeading
+import com.example.fintrack.presentation.customViews.ProvideSpace
+import com.example.fintrack.presentation.customViews.SubmitButton
 import com.example.fintrack.ui.components.BackgroundContainer
 
 @Composable

@@ -23,11 +23,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.fintrack.R
-import com.example.fintrack.corePlatform.customViews.IncomeExpenseBox
-import com.example.fintrack.corePlatform.customViews.NotificationIcon
-import com.example.fintrack.corePlatform.customViews.PeriodSelectionTab
-import com.example.fintrack.corePlatform.customViews.ProvideSpace
-import com.example.fintrack.corePlatform.customViews.TitleRow
+import com.example.fintrack.presentation.customViews.IncomeExpenseBox
+import com.example.fintrack.presentation.customViews.NotificationIcon
+import com.example.fintrack.presentation.customViews.PeriodSelectionTab
+import com.example.fintrack.presentation.customViews.ProvideSpace
+import com.example.fintrack.presentation.customViews.TitleRow
 import com.example.fintrack.presentation.components.BalanceExpenseBox
 import com.example.fintrack.ui.components.BackgroundContainer
 

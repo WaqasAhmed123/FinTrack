@@ -1,4 +1,4 @@
-package com.example.fintrack.corePlatform.customViews
+package com.example.fintrack.presentation.customViews
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

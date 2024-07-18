@@ -20,12 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.fintrack.R
-import com.example.fintrack.corePlatform.customViews.AddExpenseButton
-import com.example.fintrack.corePlatform.customViews.InputField
-import com.example.fintrack.corePlatform.customViews.InputFieldHeading
-import com.example.fintrack.corePlatform.customViews.ProvideSpace
-import com.example.fintrack.corePlatform.customViews.TitleRow
-import com.example.fintrack.corePlatform.customViews.TransactionEntry
+import com.example.fintrack.presentation.customViews.AddExpenseButton
+import com.example.fintrack.presentation.customViews.InputField
+import com.example.fintrack.presentation.customViews.InputFieldHeading
+import com.example.fintrack.presentation.customViews.ProvideSpace
+import com.example.fintrack.presentation.customViews.TitleRow
+import com.example.fintrack.presentation.customViews.TransactionEntry
 import com.example.fintrack.corePlatform.globals.common.textfield.TextFieldData
 import com.example.fintrack.ui.components.BackgroundContainer
 

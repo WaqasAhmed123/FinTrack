@@ -1,4 +1,4 @@
-package com.example.fintrack.corePlatform.customViews
+package com.example.fintrack.presentation.customViews
 
 import TabItem
 import androidx.compose.foundation.background
