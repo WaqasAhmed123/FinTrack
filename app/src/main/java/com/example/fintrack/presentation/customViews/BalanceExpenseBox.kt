@@ -47,7 +47,6 @@ fun BalanceExpenseBox(
 
         else -> {
 
-
             Box(
 //        modifier = Modifier.fillMaxWidth(0.8f)
             ) {
