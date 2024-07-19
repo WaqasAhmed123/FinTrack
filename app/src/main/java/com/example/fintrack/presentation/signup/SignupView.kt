@@ -32,6 +32,7 @@ import com.example.fintrack.presentation.customViews.InputFieldHeading
 import com.example.fintrack.presentation.customViews.ProvideSpace
 import com.example.fintrack.presentation.customViews.SubmitButton
 import com.example.fintrack.corePlatform.globals.common.textfield.TextFieldData
+import com.example.fintrack.domain.model.dataModel.RegistrationRequest
 import com.example.fintrack.ui.components.BackgroundContainer
 
 @Composable
@@ -141,7 +142,19 @@ fun SignupView(navController: NavController, viewModel: SignupViewModel = hiltVi
                         ) {
 
                             SubmitButton(
-                                onClick = { }, buttonTitle = stringResource(id = R.string.signup)
+                                onClick = {
+                                    if (email.value.text.isNotEmpty() && password.value.text.isNotEmpty() && mobileNumber.value.text.isNotEmpty()) {
+                                        viewModel.register(
+                                            RegistrationRequest(
+                                                email = email.value.text,
+                                                password = password.value.text,
+                                                userName = fullName.value.text,
+                                                mobile = mobileNumber.value.text
+                                            )
+                                        )
+                                    }
+
+                                }, buttonTitle = stringResource(id = R.string.signup),isLoading = viewModel.showProgress
                             )
 
                             ProvideSpace(height = 0.16f)

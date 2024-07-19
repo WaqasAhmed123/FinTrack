@@ -32,7 +32,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.fintrack.R
 import com.example.fintrack.corePlatform.customViewModels.BalanceExpenseBoxViewModel
 import com.example.fintrack.presentation.customViews.ProvideSpace
-import com.example.fintrack.presentation.home.HomeViewModel
 
 @Composable
 fun BalanceExpenseBox(

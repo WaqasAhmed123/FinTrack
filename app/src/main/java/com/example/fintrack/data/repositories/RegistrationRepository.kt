@@ -31,6 +31,6 @@ class RegistrationRepository @Inject constructor() : BaseRepository<Registration
 
     override fun onResponseFailure(throwable: Throwable) {
         callback!!.onNetworkError()
-        println("Error: ${throwable.message}")
+        println("Registration Error: ${throwable.message}")
     }
 }
