@@ -24,15 +24,21 @@ import javax.inject.Inject
 class SignupViewModel @Inject constructor(private val registrationUseCase: RegistrationUseCase) :
     BaseViewModel() {
 
+    private val _errorMessage = MutableStateFlow<String?>(null)
+    val errorMessage: StateFlow<String?> get() = _errorMessage
     private val _dataModel = MutableStateFlow<Registration?>(null)
     val dataModel: StateFlow<Registration?>
         get() = _dataModel
 
-    fun register(data: RegistrationRequest) {
+    fun register(
+        data: RegistrationRequest,
+        noInternetMessage: String,
+        somethingWentWrongMessage: String
+    ) {
         _showProgress.value = true
         viewModelScope.launch {
             try {
-                val statement = registrationUseCase.callRegistrationApi(
+                registrationUseCase.callRegistrationApi(
                     data,
                     callback = object : IResponseCallback<Registration> {
                         override fun onSuccess(result: Registration?) {
@@ -43,19 +49,26 @@ class SignupViewModel @Inject constructor(private val registrationUseCase: Regis
                         }
 
                         override fun onNetworkError() {
-//                                _showProgress.value = false
+                            _showProgress.value = false
+                            _errorMessage.value = noInternetMessage
 //                                _showError.value = true
 
                         }
 
                         override fun onFailure(message: String?) {
+                            _showProgress.value = false
+                            _errorMessage.value = somethingWentWrongMessage
                         }
 
-                    }) // Make sure this method exists and returns a Statement
+                    })
             } catch (e: Exception) {
                 // Handle the error
             }
         }
+    }
+
+    fun clearErrorMessage() {
+        _errorMessage.value = null
     }
 
 }

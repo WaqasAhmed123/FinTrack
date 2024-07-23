@@ -20,8 +20,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BalanceExpenseBoxViewModel @Inject constructor(private val statementUseCase: StatementUseCase, @ApplicationContext private val context: Context,) :
-    BaseViewModel() {
+class BalanceExpenseBoxViewModel @Inject constructor(
+    private val statementUseCase: StatementUseCase,
+    @ApplicationContext private val context: Context,
+) : BaseViewModel() {
 
     private var isDataLoaded = false
     private val _dataModel = MutableStateFlow<Statement?>(null)
@@ -49,27 +51,26 @@ class BalanceExpenseBoxViewModel @Inject constructor(private val statementUseCas
         _showProgress.value = true
         viewModelScope.launch {
             try {
-                val statement =
-                    statementUseCase.callStatementApi(userId = "54eff5d9-5e9b-433d-8d74-8cddd4ed1cc0",
-                        callback = object : IResponseCallback<Statement> {
-                            override fun onSuccess(result: Statement?) {
-                                isDataLoaded = true
-                                _dataModel.value = result
-                                    _showProgress.value = false
-                            }
+                statementUseCase.callStatementApi(userId = "54eff5d9-5e9b-433d-8d74-8cddd4ed1cc0",
+                    callback = object : IResponseCallback<Statement> {
+                        override fun onSuccess(result: Statement?) {
+                            isDataLoaded = true
+                            _dataModel.value = result
+                            _showProgress.value = false
+                        }
 
-                            override fun onNetworkError() {
-                                _showProgress.value = false
-                                _showError.value = true
+                        override fun onNetworkError() {
+                            _showProgress.value = false
+                            _showError.value = true
 
-                            }
+                        }
 
-                            override fun onFailure(message: String?) {
-                                _showProgress.value = false
-                                _showError.value = true
-                            }
+                        override fun onFailure(message: String?) {
+                            _showProgress.value = false
+                            _showError.value = true
+                        }
 
-                        }) // Make sure this method exists and returns a Statement
+                    }) // Make sure this method exists and returns a Statement
             } catch (e: Exception) {
                 // Handle the error
             }
