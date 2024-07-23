@@ -11,11 +11,11 @@ class StatementRepository @Inject constructor() : BaseRepository<Statement>() {
 
     private var callback: IResponseCallback<Statement>? = null
 
-    fun getStatementFromApi(userId: String, callback :IResponseCallback<Statement>) {
+    fun getStatementFromApi(userId: String, callback: IResponseCallback<Statement>) {
         this.callback = callback
         getResponseData {
-            val apiInterface = RetrofitRestClient.getRetrofit()
-                .create(StatementEndPoint::class.java)
+            val apiInterface =
+                RetrofitRestClient.getRetrofit().create(StatementEndPoint::class.java)
             apiInterface.getStatement(userId)
         }
     }
@@ -27,7 +27,12 @@ class StatementRepository @Inject constructor() : BaseRepository<Statement>() {
     }
 
     override fun onResponseFailure(throwable: Throwable) {
-        callback!!.onNetworkError()
-        println("Error: ${throwable.message}")
+        if (throwable is Exception) {
+            callback!!.onNetworkError()
+        }
+        else{
+            callback!!.onFailure(message = throwable.toString())
+        }
+        println("ErrorRF: ${throwable.message}")
     }
 }

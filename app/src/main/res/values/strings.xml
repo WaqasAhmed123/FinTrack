@@ -43,7 +43,7 @@
     <string name="turn_dark_theme">Turn Dark Theme</string>
     <string name="no_internet_connection">No internet connection</string>
     <string name="check_your_connection">Please check your connection and try again.</string>
-    <string name="network_error_occurred">Network error occurred</string>
+    <string name="something_went_wrong">Oh!Looks like something went wrong</string>
     <string name="please_try_again">Please try again later.</string>
     <string name="retry">Retry</string>
 

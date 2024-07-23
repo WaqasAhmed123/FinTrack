@@ -31,24 +31,44 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.fintrack.R
 import com.example.fintrack.corePlatform.customViewModels.BalanceExpenseBoxViewModel
+import com.example.fintrack.corePlatform.utilities.ConnectionState
+import com.example.fintrack.corePlatform.utilities.connectivityState
+import com.example.fintrack.presentation.customViews.ErrorComposable
+import com.example.fintrack.presentation.customViews.NoInternetConnection
 import com.example.fintrack.presentation.customViews.ProvideSpace
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @Composable
 fun BalanceExpenseBox(
     usagePercentage: Float = 0.3f, viewModel: BalanceExpenseBoxViewModel = hiltViewModel()
 ) {
-
+    val connection by connectivityState()
+    val isConnected = connection === ConnectionState.Available
     val dataModel by viewModel.dataModel.collectAsState()
     val showProgress by viewModel.showProgress.collectAsState()
+    val showError by viewModel.showError.collectAsState()
+    val showNetworkError by viewModel.showNetworkError.collectAsState()
 
-    when (showProgress) {
-        true -> LoadingState()
+    when {
+        !isConnected -> {
+            NoInternetConnection()
+        }
+
+        showProgress -> {
+            LoadingState()
+        }
+
+        showNetworkError -> {
+            NoInternetConnection()
+        }
+
+        showError -> {
+            ErrorComposable(onRetry = { viewModel.callApi() })
+        }
 
         else -> {
-
-            Box(
-//        modifier = Modifier.fillMaxWidth(0.8f)
-            ) {
+            Box(modifier = Modifier.fillMaxWidth()) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -73,7 +93,6 @@ fun BalanceExpenseBox(
                                     text = stringResource(id = R.string.total_balance),
                                     style = MaterialTheme.typography.headlineSmall
                                 )
-
                             }
                             Text(
                                 text = "${dataModel?.totalBalance}",
@@ -93,7 +112,6 @@ fun BalanceExpenseBox(
                             modifier = Modifier.weight(1f),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Image(
                                     painterResource(id = R.drawable.ic_expense),
@@ -106,7 +124,6 @@ fun BalanceExpenseBox(
                                     text = stringResource(id = R.string.total_expense),
                                     style = MaterialTheme.typography.headlineSmall
                                 )
-
                             }
                             Text(
                                 text = "${dataModel?.totalExpense}",
@@ -121,28 +138,23 @@ fun BalanceExpenseBox(
 
                     Row(
                         modifier = Modifier
-//                    .fillMaxWidth()
                             .height(27.dp)
                             .clip(RoundedCornerShape(13.5.dp))
                             .fillMaxWidth(0.8f)
-
                     ) {
-                        dataModel?.expensePercentage?.toFloat()?.let {
-                            Modifier
-                                .fillMaxHeight()
-                                //                        .weight(usagePercentage)
-                                .weight(0.7f)
-                                .background(Color.Black)
-                        }?.let {
+                        dataModel?.expensePercentage?.toFloat()?.let { percentage ->
                             Box(
-                                modifier = it, contentAlignment = Alignment.Center
-
+                                modifier = Modifier
+                                    .fillMaxHeight()
+                                    .weight(percentage)
+                                    .background(Color.Black), contentAlignment = Alignment.Center
                             ) {
                                 Text(
-                                    text = "${(usagePercentage * 100).toInt()}%",
-                                    style = MaterialTheme.typography.headlineSmall.copy(color = MaterialTheme.colorScheme.inversePrimary)
+                                    text = "${(percentage * 100).toInt()}%",
+                                    style = MaterialTheme.typography.headlineSmall.copy(
+                                        color = MaterialTheme.colorScheme.inversePrimary
+                                    )
                                 )
-
                             }
                         }
                         Box(
@@ -156,14 +168,12 @@ fun BalanceExpenseBox(
                                 text = "465,156",
                                 style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
                                 modifier = Modifier.padding(horizontal = 16.dp)
-
                             )
                         }
                     }
 
                     ProvideSpace(height = 0.08f)
 
-                    // Bottom section with an icon and text
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,

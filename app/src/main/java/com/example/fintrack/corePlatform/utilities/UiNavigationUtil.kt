@@ -6,12 +6,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.easyshop.view.tab_view.TabScreen
-import com.example.fintrack.presentation.customViews.NetworkError
 import com.example.fintrack.presentation.customViews.NoInternetConnection
 import com.example.fintrack.presentation.addExpenses.AddExpensesView
 import com.example.fintrack.presentation.analysis.AnalysisView
 import com.example.fintrack.presentation.category.CategoryView
 import com.example.fintrack.presentation.categoryDetail.CategoryDetailView
+import com.example.fintrack.presentation.customViews.ErrorComposable
 import com.example.fintrack.presentation.home.HomeView
 import com.example.fintrack.presentation.login.LoginView
 import com.example.fintrack.presentation.profile.ProfileView
@@ -65,7 +65,7 @@ object UiNavigationUtil {
                 ProfileView(navController)
             }
             composable (route = "network_error_screen") {
-                NetworkError(onRetry = ({}))
+                ErrorComposable(onRetry = ({}))
             }
             composable (route = "no_internet_screen") {
                 NoInternetConnection()
