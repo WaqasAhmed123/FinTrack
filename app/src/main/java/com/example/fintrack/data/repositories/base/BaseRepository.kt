@@ -1,12 +1,13 @@
 package com.example.fintrack.data.repositories.base
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-abstract class BaseRepository<ResultType> {
+abstract class BaseRepository<ResultType> (val context: Context){
 
     fun getResponseData(apiCall: () -> Call<ResultType>) {
         loadAPIDataFromRemoteServer(apiCall())

@@ -70,6 +70,7 @@ fun SignupView(navController: NavController, viewModel: SignupViewModel = hiltVi
         )
     )
 
+    val isLoading by viewModel.showProgress.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
     errorMessage?.let {
         ShowToast(context = context, text = it)
@@ -178,7 +179,8 @@ fun SignupView(navController: NavController, viewModel: SignupViewModel = hiltVi
 
                                 },
                                 buttonTitle = stringResource(id = R.string.signup),
-                                isLoading = viewModel.showProgress
+//                                isLoading = viewModel.showProgress
+                                isLoading = isLoading
                             )
 
                             ProvideSpace(height = 0.16f)

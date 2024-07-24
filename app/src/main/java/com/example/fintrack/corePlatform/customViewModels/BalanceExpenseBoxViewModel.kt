@@ -60,14 +60,16 @@ class BalanceExpenseBoxViewModel @Inject constructor(
                         }
 
                         override fun onNetworkError() {
-                            _showProgress.value = false
-                            _showError.value = true
+                            super@BalanceExpenseBoxViewModel.onNetworkError()
+//                            _showProgress.value = false
+//                            _showError.value = true
 
                         }
 
                         override fun onFailure(message: String?) {
-                            _showProgress.value = false
-                            _showError.value = true
+                            super@BalanceExpenseBoxViewModel.onFailure(message)
+//                            _showProgress.value = false
+//                            _showError.value = true
                         }
 
                     }) // Make sure this method exists and returns a Statement

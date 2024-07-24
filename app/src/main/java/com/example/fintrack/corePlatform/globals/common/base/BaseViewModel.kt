@@ -1,5 +1,6 @@
 package com.example.fintrack.corePlatform.globals.common.base
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.fintrack.corePlatform.globals.callbacks.IBaseError
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,10 +27,12 @@ open class BaseViewModel : ViewModel(), IBaseError {
     override fun onNetworkError() {
         _showProgress.value = false
         _showNetworkError.value = true
+        Log.d("overrideCalled","${showProgress.value} and showNetErr ${showNetworkError.value}")
     }
 
     override fun onFailure(message: String?) {
         _showProgress.value = false
         _showError.value = true
+        Log.d("overrideCalled","${showProgress.value} and showErr ${showError.value}")
     }
 }

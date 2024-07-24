@@ -24,8 +24,8 @@ object UiNavigationUtil {
 
     @Composable
     fun App() {
-        var startView = "splash_screen"
-//        var startView = "loading_screen"
+//        var startView = "splash_screen"
+        var startView = "login_screen"
 //        var startView = "tab_screen"
 //        var startView = "add_expenses_screen"
 //        var startView = "profile_screen"

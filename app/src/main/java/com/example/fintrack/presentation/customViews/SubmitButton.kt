@@ -1,6 +1,7 @@
 package com.example.fintrack.presentation.customViews
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,7 +25,8 @@ import kotlinx.coroutines.flow.StateFlow
 fun SubmitButton(
     onClick: () -> Unit,
     buttonTitle: String,
-    isLoading: StateFlow<Boolean>? = null,
+//    isLoading: StateFlow<Boolean>? = null,
+    isLoading: Boolean? = false,
     buttonWidth: Float = 0.5f,
     color: Color = MaterialTheme.colorScheme.primary
 ) {
@@ -41,7 +43,8 @@ fun SubmitButton(
         colors = ButtonDefaults.buttonColors(containerColor = color),
         shape = RoundedCornerShape(41.dp),
     ) {
-        if (isLoading?.value == true) {
+        Log.d("isLoadingValue","${isLoading}")
+        if (isLoading == true) {
             CircularProgressIndicator(color = Color.White)
 
         } else {

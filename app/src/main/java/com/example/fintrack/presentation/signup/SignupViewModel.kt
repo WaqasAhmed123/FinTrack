@@ -1,5 +1,6 @@
 package com.example.fintrack.presentation.signup
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.res.stringResource
@@ -49,14 +50,12 @@ class SignupViewModel @Inject constructor(private val registrationUseCase: Regis
                         }
 
                         override fun onNetworkError() {
-                            _showProgress.value = false
+                            super@SignupViewModel.onNetworkError()
                             _errorMessage.value = noInternetMessage
-//                                _showError.value = true
-
                         }
 
                         override fun onFailure(message: String?) {
-                            _showProgress.value = false
+                            super@SignupViewModel.onNetworkError()
                             _errorMessage.value = somethingWentWrongMessage
                         }
 
