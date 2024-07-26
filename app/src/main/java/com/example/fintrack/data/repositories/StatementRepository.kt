@@ -31,12 +31,11 @@ class StatementRepository @Inject constructor(@ApplicationContext context: Conte
 
     override fun onResponseFailure(throwable: Throwable) {
         if (throwable is NoInternetException) {
-
-            println("ErrorRFExep: ${throwable}")
+//            println("ErrorRFExep: ${throwable}")
             callback!!.onNetworkError()
         } else {
             callback!!.onFailure(message = throwable.toString())
         }
-        println("ErrorRF: ${throwable.message}")
+//        println("ErrorRF: ${throwable.message}")
     }
 }

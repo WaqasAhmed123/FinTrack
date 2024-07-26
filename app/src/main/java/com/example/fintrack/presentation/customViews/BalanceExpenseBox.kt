@@ -1,6 +1,7 @@
 package com.example.fintrack.presentation.components
 
 import LoadingState
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -50,8 +51,10 @@ fun BalanceExpenseBox(
     val showError by viewModel.showError.collectAsState()
     val showNetworkError by viewModel.showNetworkError.collectAsState()
 
+    Log.d("NoErrorDM","$dataModel")
+
     when {
-        !isConnected -> {
+        !isConnected && dataModel==null -> {
             NoInternetConnection()
         }
 
@@ -59,11 +62,11 @@ fun BalanceExpenseBox(
             LoadingState()
         }
 
-        showNetworkError -> {
+        showNetworkError && dataModel==null -> {
             NoInternetConnection()
         }
 
-        showError -> {
+        showError && dataModel==null -> {
             ErrorComposable(onRetry = { viewModel.callApi() })
         }
 
@@ -143,18 +146,22 @@ fun BalanceExpenseBox(
                             .fillMaxWidth(0.8f)
                     ) {
                         dataModel?.expensePercentage?.toFloat()?.let { percentage ->
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxHeight()
-                                    .weight(percentage)
-                                    .background(Color.Black), contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = "${(percentage * 100).toInt()}%",
-                                    style = MaterialTheme.typography.headlineSmall.copy(
-                                        color = MaterialTheme.colorScheme.inversePrimary
+                            if (dataModel?.expensePercentage!! >0){
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxHeight()
+                                        .weight(percentage + 0.4f)
+                                        .background(Color.Black),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "${(percentage + 0.4 * 100).toInt()}%",
+                                        style = MaterialTheme.typography.headlineSmall.copy(
+                                            color = MaterialTheme.colorScheme.inversePrimary
+                                        )
                                     )
-                                )
+                                }
+
                             }
                         }
                         Box(

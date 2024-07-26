@@ -1,7 +1,6 @@
 package com.example.fintrack.data.networkService.retrofit
 
 import android.content.Context
-import com.microsoft.appcenter.http.HttpClient
 import okhttp3.OkHttpClient
 
 object NetworkHttpClient {
@@ -10,6 +9,5 @@ object NetworkHttpClient {
             OkHttpClient.Builder().addInterceptor(NetworkInterceptor(context)).build()
 
         return okHttpClient
-
     }
 }

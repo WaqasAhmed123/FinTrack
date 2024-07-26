@@ -1,6 +1,7 @@
 package com.example.fintrack.corePlatform.customViewModels
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.fintrack.corePlatform.globals.callbacks.IResponseCallback
 import com.example.fintrack.corePlatform.globals.common.base.BaseViewModel
@@ -54,12 +55,14 @@ class BalanceExpenseBoxViewModel @Inject constructor(
                 statementUseCase.callStatementApi(userId = "54eff5d9-5e9b-433d-8d74-8cddd4ed1cc0",
                     callback = object : IResponseCallback<Statement> {
                         override fun onSuccess(result: Statement?) {
+                            Log.d("overrideCalledSuc","called")
                             isDataLoaded = true
                             _dataModel.value = result
                             _showProgress.value = false
                         }
 
                         override fun onNetworkError() {
+//                            Log.d("errorCalled","netw")
                             super@BalanceExpenseBoxViewModel.onNetworkError()
 //                            _showProgress.value = false
 //                            _showError.value = true
@@ -67,6 +70,7 @@ class BalanceExpenseBoxViewModel @Inject constructor(
                         }
 
                         override fun onFailure(message: String?) {
+//                            Log.d("errorCalledErr","$message")
                             super@BalanceExpenseBoxViewModel.onFailure(message)
 //                            _showProgress.value = false
 //                            _showError.value = true
